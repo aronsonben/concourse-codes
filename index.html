@@ -4,15 +4,53 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Concourse Codes</title>
+    <link rel="icon" href="./assets/img/paradise.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylez.css" />
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('.sidebar a');
+        const mainContent = document.querySelector('.main-content');
+
+        links.forEach(link => {
+          link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const page = link.getAttribute('href').substring(1) + '.html';
+            fetch(page)
+              .then(response => response.text())
+              .then(data => {
+                mainContent.innerHTML = data;
+              })
+              .catch(error => console.error('Error loading page:', error));
+          });
+        });
+      });
+    </script>
   </head>
   <body>
-    <div class="body-content">
-      <span>concourse codes</span>
-      <a href="https://colors.concourse.codes" target="_blank">synthesia</a>
+    <header>
+      <div>
+        <a href="#">
+          <img src="./assets/img/paradise.png" alt="site-logo" />
+          <h1>Concourse Codes</h1>
+        </a>
+      </div>
+    </header>
+    <div class="container">
+      <aside class="sidebar">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li class="wip"><a href="javascript:void(0)">Projects</a> <span class="wip-text">(WIP)</span></li>
+            <li class="wip"><a href="javascript:void(0)">Ideas</a> <span class="wip-text">(WIP)</span></li>
+            <li class="wip"><a href="javascript:void(0)">Blog</a> <span class="wip-text">(WIP)</span></li>
+            <li class="wip"><a href="javascript:void(0)">Contact</a> <span class="wip-text">(WIP)</span></li>
+        </ul>
+      </aside>
+      <main class="main-content">
+        <p>Hello! Select a link on the left to explore my site.</p>
+      </main>
     </div>
-    <footer>
-      <p>© bo rice. 2025</p>
-    </footer>
   </body>
 </html>
