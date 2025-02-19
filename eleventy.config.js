@@ -9,7 +9,6 @@ module.exports = async function(eleventyConfig) {
 };
 
 module.exports.config = {
-  pathPrefix: "/blog/",
   htmlTemplateEnginer: "html",
   markdownTemplateEngine: "njk",
   templateFormats: ["html", "md", "njk"],
