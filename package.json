@@ -1,12 +1,11 @@
 {
   "name": "concoursecodes",
   "version": "1.0.0",
-  "private": true,
+  "main": "blog.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/aronsonben/concourse-codes.git"
   },
-  "homepage": "https://concourse.codes",
   "scripts": {
     "build": "eleventy",
     "watch": "eleventy --watch",
