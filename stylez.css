@@ -126,6 +126,13 @@ footer {
 /** pages **/
 
 
+/** blog **/
+
+.blog {
+  background-color: pink;
+}
+
+
 /** work in progress **/
 
 .body-content {

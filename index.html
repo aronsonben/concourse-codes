@@ -11,6 +11,36 @@
     <link rel="stylesheet" href="stylez.css" />
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        const rssFeedUrl = 'https://lowpolybrainblasts.pika.page/posts_feed'; // Replace with your RSS feed URL
+
+        function loadRSSFeed() {
+          console.log('load rss feed')
+          const rssFeedContainer = document.getElementById('rss-feed');
+          if (!rssFeedContainer) return;
+
+          fetch(rssFeedUrl)
+            .then(response => response.text())
+            .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+            .then(data => {
+              let feed = data.getElementsByTagName("feed");
+              let bloglink = data.getElementsByTagName("link")[0];
+              const items = data.querySelectorAll("entry");
+              let html = '<div>';
+              items.forEach(el => {
+                const title = el.querySelector("title").textContent;
+                const link = el.querySelector("link").textContent;
+                html += `<p><a href="${link}" target="_blank">${title}</a></p>`;
+              });
+              html += '</div>';
+              rssFeedContainer.innerHTML = html;
+            })
+            .catch(error => {
+              console.error('Error fetching the RSS feed:', error);
+              rssFeedContainer.innerHTML = '<p>Failed to load RSS feed.</p>';
+            });
+        }
+
+        // Enable link to be clicked in sidebar
         const links = document.querySelectorAll('.sidebar a');
         const mainContent = document.querySelector('.main-content');
 
@@ -18,14 +48,13 @@
           link.addEventListener('click', function(event) {
             event.preventDefault();
             var page = link.getAttribute('href');
-            // If page contains "/blog/", load the page as markdown
-            if (!page.includes('/blog/')) {
-              page = page + '.html';
-            }
             fetch(page)
               .then(response => response.text())
               .then(data => {
                 mainContent.innerHTML = data;
+                if (page.includes('blog')) {
+                  loadRSSFeed();
+                }
               })
               .catch(error => console.error('Error loading page:', error));
           });
@@ -45,12 +74,11 @@
     <div class="container">
       <aside class="sidebar">
         <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="/blog/">Eleventy Blog (WIP)</a></li>
-            <li class="wip"><a href="javascript:void(0)">Ideas</a> <span class="wip-text">(WIP)</span></li>
-            <li class="wip"><a href="javascript:void(0)">Blog</a> <span class="wip-text">(WIP)</span></li>
-            <li class="wip"><a href="javascript:void(0)">Contact</a> <span class="wip-text">(WIP)</span></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="ideas.html">Ideas</a></li>
+            <li><a href="projects.html">Projects</a></li>
         </ul>
       </aside>
       <main class="main-content">
