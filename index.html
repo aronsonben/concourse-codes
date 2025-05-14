@@ -41,9 +41,25 @@
         }
 
         // Enable link to be clicked in sidebar
+        const homeLink = document.querySelector('.site-logo');
         const links = document.querySelectorAll('.sidebar a');
         const mainContent = document.querySelector('.main-content');
 
+        // Add click event listener to the home link
+        homeLink.addEventListener('click', function(event) {
+          event.preventDefault();
+          mainContent.innerHTML = `
+            <div class="icon-header">
+              <img src="./assets/img/dracaena.png" alt="site-logo" class="concourse-icon-lg" style="max-width: 110px; max-height: 110px" />
+              <img src="./assets/img/ben_pixel.png" alt="ben-head-pixel" class="concourse-icon-xl" />
+              <img src="./assets/img/monstera.png" alt="site-logo" class="concourse-icon-lg" />
+            </div>
+            <p>Hey! I'm Ben Aronson and you've made it to Concourse.
+            <br /><br />Select a link on the left to explore my site.</p>
+          `;
+        });
+
+        // Add click event listeners to sidebar links
         links.forEach(link => {
           link.addEventListener('click', function(event) {
             event.preventDefault();
@@ -65,10 +81,11 @@
   <body>
     <header>
       <div>
-        <a href="#">
+        <a href="#" class="site-logo">
           <img src="./assets/img/paradise.png" alt="site-logo" />
           <h1>Concourse Codes</h1>
         </a>
+        <p style="font-size: 0.75rem; margin-bottom: 0.3rem">by Ben Aronson</p>
       </div>
     </header>
     <div class="container">
@@ -81,7 +98,13 @@
         </ul>
       </aside>
       <main class="main-content">
-        <p>Hello! Select a link on the left to explore my site.</p>
+        <div class="icon-header">
+          <img src="./assets/img/dracaena.png" alt="site-logo" class="concourse-icon-lg" />
+          <img src="./assets/img/ben_pixel.png" alt="ben-head-pixel" class="concourse-icon-xl" id="ben-head-pixel" />
+          <img src="./assets/img/monstera.png" alt="site-logo" class="concourse-icon-lg" />
+        </div>
+        <p>Hey! I'm Ben Aronson and you've made it to Concourse.
+          <br /><br />Select a link on the left to explore my site.</p>
       </main>
     </div>
   </body>
