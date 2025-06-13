@@ -42,6 +42,7 @@
 
         // Enable link to be clicked in sidebar
         const homeLink = document.querySelector('.site-logo');
+        const homeSideLink = document.querySelector('.site-home-link');
         const links = document.querySelectorAll('.sidebar a');
         const mainContent = document.querySelector('.main-content');
 
@@ -64,6 +65,23 @@
           link.addEventListener('click', function(event) {
             event.preventDefault();
             var page = link.getAttribute('href');
+            // Handle home separately
+            if (page.includes('index')) {
+              mainContent.innerHTML = `
+                <div class="bio-header">
+                  <img src="./assets/img/ben_pixel.png" alt="ben-head-pixel" class="cicon concourse-icon-xl" id="ben-head-pixel" />
+                  <div class="bio-text">
+                    <p>Hey! I'm Ben Aronson.</p>
+                    <p>Welcome to <b>Concourse Codes</b>, my digital home in cyberspace.</p>
+                  </div>
+                </div>
+                <div style="padding: 10px 0;">
+                  <p>Click a link in the sidebar to explore my site.</p>
+                </div>
+              `;
+              return;
+            } 
+            // Handle all other links
             fetch(page)
               .then(response => response.text())
               .then(data => {
@@ -79,32 +97,34 @@
     </script>
   </head>
   <body>
-    <header>
-      <div>
-        <a href="#" class="site-logo">
-          <img src="./assets/img/paradise.png" alt="site-logo" />
-          <h1>Concourse Codes</h1>
-        </a>
-        <p style="font-size: 0.75rem; margin-bottom: 0.3rem">by Ben Aronson</p>
-      </div>
-    </header>
     <div class="container">
       <aside class="sidebar">
+        <div class="logo">
+          <a href="index.html" class="site-logo">
+            <img src="./assets/img/paradise.png" alt="site-logo" />
+            <h1>Concourse Codes</h1>
+          </a>
+          <!-- <p style="font-size: 0.75rem; margin-bottom: 0.3rem">by Ben Aronson</p> -->
+        </div>
         <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><span class="concourse-icon-xs">&nbsp;•&nbsp;</span><a href="index.html" class="site-home-link">Home</a></li>
+            <li><a href="about.html" class="icon-link"><img src="./assets/img/ben_pixel.png" alt="ben-head-pixel" class="concourse-icon-xs" id="ben-head-pixel" />About</a></li>
+            <li><a href="projects.html" class="icon-link"><img src="./assets/img/dracaena.png" alt="site-logo" class="concourse-icon-xs" />Projects</a></li>
+            <li><a href="blog.html" class="icon-link"><img src="./assets/img/monstera.png" alt="site-logo" class="concourse-icon-xs" />Blog</a></li>
+            <li><a href="contact.html" class="icon-link"><img src="./assets/img/mailbush.png" alt="site-logo" class="concourse-icon-xs" />Contact</a></li>
         </ul>
       </aside>
       <main class="main-content">
-        <div class="icon-header">
-          <img src="./assets/img/dracaena.png" alt="site-logo" class="concourse-icon-lg" />
-          <img src="./assets/img/ben_pixel.png" alt="ben-head-pixel" class="concourse-icon-xl" id="ben-head-pixel" />
-          <img src="./assets/img/monstera.png" alt="site-logo" class="concourse-icon-lg" />
+        <div class="bio-header">
+          <img src="./assets/img/ben_pixel.png" alt="ben-head-pixel" class="cicon concourse-icon-xl" id="ben-head-pixel" />
+          <div class="bio-text">
+            <p>Hey! I'm Ben Aronson.</p>
+            <p>Welcome to <b>Concourse Codes</b>, my digital home in cyberspace.</p>
+          </div>
         </div>
-        <p>Hey! I'm Ben Aronson and you've made it to Concourse.
-          <br /><br />Select a link on the left to explore my site.</p>
+        <div style="padding: 10px 0;">
+          <p>Click a link in the sidebar to explore my site.</p>
+        </div>
       </main>
     </div>
   </body>
