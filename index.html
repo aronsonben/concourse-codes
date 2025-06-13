@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4KMFDS6BW1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4KMFDS6BW1');
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Concourse Codes</title>
@@ -64,6 +73,13 @@
         links.forEach(link => {
           link.addEventListener('click', function(event) {
             event.preventDefault();
+            // Google Analytics 4 event logging
+            if (typeof gtag === 'function') {
+              gtag('event', 'sidebar_link_click', {
+                'event_category': 'navigation',
+                'event_label': link.getAttribute('href')
+              });
+            }
             var page = link.getAttribute('href');
             // Handle home separately
             if (page.includes('index')) {
