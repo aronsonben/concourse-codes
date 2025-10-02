@@ -36,7 +36,7 @@ exports.handler = async (event, context) => {
 
     // Fetch form submissions from Netlify API
     const response = await fetch(
-      `https://api.netlify.com/api/v1/sites/${SITE_ID}/submissions?form_name=community-messages`,
+      `https://api.netlify.com/api/v1/sites/${SITE_ID}/submissions?form_name=microblog`,
       {
         headers: {
           'Authorization': `Bearer ${NETLIFY_API_TOKEN}`,
