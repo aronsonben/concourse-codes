@@ -25,9 +25,9 @@
       
       <!-- Message Board Form -->
       <div class="forum-container">
-        <div class="message-form">
-          <form id="messageForm" name="community-messages" method="POST" netlify>
-            <input type="hidden" name="form-name" value="community-messages" />
+        <div class="microblog-form">
+          <form id="microblogForm" name="microblog" method="POST" netlify>
+            <input type="hidden" name="form-name" value="microblog" />
             <p>
               <label>Your Name: <input type="text" id="userName" name="name" required /></label>
             </p>
@@ -41,8 +41,8 @@
         </div>
         
         <!-- Messages Display -->
-        <div class="messages-container">
-          <div id="messagesBoard"></div>
+        <div class="microblogs-container">
+          <div id="microblogBoard"></div>
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@
         
         if (name && message) {
           const formData = new FormData();
-          formData.append('form-name', 'community-messages');
+          formData.append('form-name', 'microblog');
           formData.append('name', name);
           formData.append('message', message);
           
