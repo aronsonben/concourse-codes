@@ -66,7 +66,7 @@
       }
 
       setupEventListeners() {
-        const form = document.getElementById('messageForm');
+        const form = document.getElementById('microblogForm');
         form.addEventListener('submit', (e) => {
           e.preventDefault();
           this.handleSubmit();
@@ -149,7 +149,7 @@
       }
 
       displayMessages() {
-        const container = document.getElementById('messagesBoard');
+        const container = document.getElementById('microblogBoard');
         
         if (this.messages.length === 0) {
           container.innerHTML = '<div class="no-messages">No messages yet. Be the first to say something!</div>';
@@ -163,12 +163,12 @@
         const timestamp = this.formatTimestamp(message.timestamp);
         
         return `
-          <div class="message-card">
-            <div class="message-header">
-              <span class="message-author">${this.escapeHtml(message.author)}</span>
-              <span class="message-timestamp">${timestamp}</span>
+          <div class="microblog-card">
+            <div class="microblog-header">
+              <span class="microblog-author">${this.escapeHtml(message.author)}</span>
+              <span class="microblog-timestamp">${timestamp}</span>
             </div>
-            <div class="message-content">${this.escapeHtml(message.content)}</div>
+            <div class="microblog-content">${this.escapeHtml(message.content)}</div>
           </div>
         `;
       }
@@ -178,7 +178,7 @@
         messageDiv.className = `status-message ${type}`;
         messageDiv.textContent = text;
         
-        const form = document.querySelector('.message-form');
+        const form = document.querySelector('.microblog-form');
         form.insertBefore(messageDiv, form.firstChild);
         
         setTimeout(() => {
