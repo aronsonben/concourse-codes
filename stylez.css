@@ -440,6 +440,131 @@ footer {
   margin: 20px 0;
 }
 
+/* Forum/Message Board Styles */
+.forum-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.microblog-form {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #D4C5A9;
+  border-radius: 5px;
+  background-color: #F8F5E8;
+}
+
+.microblog-form form {
+  margin: 0;
+}
+
+.microblog-form input[type="text"],
+.microblog-form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #D4C5A9;
+  border-radius: 3px;
+  font-family: 'windowsregular', "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  background-color: #FCFAF0;
+  color: #253031;
+}
+
+.microblog-form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.microblog-form button {
+  background-color: #253031;
+  color: #FCFAF0;
+  border: 1px solid #253031;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'windowsregular', "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.microblog-form button:hover {
+  background-color: #3A4041;
+  border-color: #3A4041;
+}
+
+.microblogs-container {
+  max-height: 500px;
+  overflow-y: auto;
+  border: 1px solid #D4C5A9;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #FCFAF0;
+}
+
+.microblog-card {
+  border: 1px solid #E6DCC6;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #F8F5E8;
+  box-shadow: 0 1px 3px rgba(37, 48, 49, 0.1);
+}
+
+.microblog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #E6DCC6;
+}
+
+.microblog-author {
+  font-weight: bold;
+  color: #253031;
+  font-size: 0.95rem;
+}
+
+.microblog-timestamp {
+  color: #6B5B47;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.microblog-content {
+  line-height: 1.5;
+  font-size: 0.9rem;
+  word-wrap: break-word;
+  color: #253031;
+}
+
+.no-microblogs {
+  text-align: center;
+  color: #6B5B47;
+  font-style: italic;
+  padding: 30px 0;
+}
+
+.status-message {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+
+.status-message.success {
+  background-color: #E8F5E8;
+  border: 1px solid #C3E6CB;
+  color: #2F5233;
+}
+
+.status-message.error {
+  background-color: #F8E8E8;
+  border: 1px solid #E6C3C3;
+  color: #5A2F2F;
+}
+
 @media screen and (max-width: 540px) {
 
   /* **** sidebar **** */

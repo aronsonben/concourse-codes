@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4KMFDS6BW1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4KMFDS6BW1');
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Concourse Codes</title>
+    <link rel="icon" href="./assets/img/paradise.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../stylez.css" />
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <main class="main-content" style="width: 100%; padding: 10px;">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          <div style="display: flex; align-items: center;">
+            <img src="../assets/img/spotify.png" alt="site-logo" class="concourse-icon" />
+            <h2>RevenueSpot</h2>
+            <p>&nbsp;| <i>Spotify Song Revenue Estimator</i></p>
+          </div>
+          <video src="https://concourse-codes.s3.us-east-1.amazonaws.com/RevenueSpot_DemoClip.mp4" autoplay loop muted style="max-width: 40%; border: 1px solid #ccc; border-radius: 8px; margin-top: 1rem;"></video>
+          <div id="blog-content" style="line-height: 1.8; display: flex; flex-direction: column; justify-content: center; align-items:center; gap: 15px; padding: 0 40px;"></div>
+          <video src="https://concourse-codes.s3.us-east-1.amazonaws.com/RevenueSpot_DemoClip.mp4" autoplay loop muted style="max-width: 40%; border: 1px solid #ccc; border-radius: 8px; margin-top: 1rem;"></video>
+          <a href="https://github.com/aronsonben" rel="noopener noreferrer"><p><i>Take a peek at all my GitHub repositories here.</i></p></a>
+        </div>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+      fetch('revenuespot.md')
+        .then(response => response.text())
+        .then(text => {
+          document.getElementById('blog-content').innerHTML = marked.parse(text);
+        })
+        .catch(error => {
+          document.getElementById('blog-content').innerHTML = "<p><em>Whoops!</em>The whole blog couldn't load. TL;DR - I wanted to see how much money each song made on Spotify per stream count. I used web scraping to look at Spotify web player pages. It worked okay, but cost money to keep live. The end!</p>";
+          console.error(error);
+        });;
+    </script>
+  </body>
+</html>

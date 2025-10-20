@@ -19,33 +19,51 @@
     </script>
 </head>
 <body>
-  <div class="body-content">
-    <div class="center-nav-forum">
-      <p class="proverb-aesthetic">drop by and say hi :)</p>
-      
-      <!-- Message Board Form -->
-      <div class="forum-container">
-        <div class="microblog-form">
-          <form id="microblogForm" name="microblog" method="POST" netlify>
-            <input type="hidden" name="form-name" value="microblog" />
-            <p>
-              <label>Your Name: <input type="text" id="userName" name="name" required /></label>
-            </p>
-            <p>
-              <label>Message: <textarea id="userMessage" name="message" placeholder="Share your thoughts..." required></textarea></label>
-            </p>
-            <p>
-              <button type="submit">Post Message</button>
-            </p>
-          </form>
-        </div>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <a href="index.html" class="site-logo">
+          <img src="./assets/img/paradise.png" alt="site-logo" />
+          <h1>Concourse Codes</h1>
+        </a>
+      </div>
+      <ul>
+          <li><span class="concourse-icon-xs">&nbsp;•&nbsp;</span><a href="index.html" class="site-home-link">Home</a></li>
+          <li><a href="about.html" class="icon-link"><img src="./assets/img/ben_pixel.png" alt="ben-head-pixel" class="concourse-icon-xs" id="ben-head-pixel" />About</a></li>
+          <li><a href="projects.html" class="icon-link"><img src="./assets/img/dracaena.png" alt="site-logo" class="concourse-icon-xs" />Projects</a></li>
+          <li><a href="blog.html" class="icon-link"><img src="./assets/img/monstera.png" alt="site-logo" class="concourse-icon-xs" />Blog</a></li>
+          <li><a href="microblog.html" class="icon-link"><img src="./assets/img/swatch.png" alt="microblog-icon" class="concourse-icon-xs" />Microblog</a></li>
+          <li><a href="contact.html" class="icon-link"><img src="./assets/img/mailbush.png" alt="site-logo" class="concourse-icon-xs" />Contact</a></li>
+      </ul>
+    </aside>
+    <main class="main-content">
+      <div class="center-nav-forum">
+        <p class="proverb-aesthetic">drop by and say hi :)</p>
         
-        <!-- Messages Display -->
-        <div class="microblogs-container">
-          <div id="microblogBoard"></div>
+        <!-- Message Board Form -->
+        <div class="forum-container">
+          <div class="microblog-form">
+            <form id="microblogForm" name="microblog" method="POST" netlify>
+              <input type="hidden" name="form-name" value="microblog" />
+              <p>
+                <label>Your Name: <input type="text" id="userName" name="name" required /></label>
+              </p>
+              <p>
+                <label>Message: <textarea id="userMessage" name="message" placeholder="Share your thoughts..." required></textarea></label>
+              </p>
+              <p>
+                <button type="submit">Post Message</button>
+              </p>
+            </form>
+          </div>
+          
+          <!-- Messages Display -->
+          <div class="microblogs-container">
+            <div id="microblogBoard"></div>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   </div>
   <footer>
     <p>© bo rice. 2025</p>
