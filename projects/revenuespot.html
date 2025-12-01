@@ -18,23 +18,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../stylez.css" />
-    <style>
-
-    </style>
   </head>
   <body>
     <div class="container">
-      <main class="main-content" style="width: 100%; padding: 10px;">
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-          <div style="display: flex; align-items: center;">
-            <img src="../assets/img/spotify.png" alt="site-logo" class="concourse-icon" />
-            <h2>RevenueSpot</h2>
-            <p>&nbsp;| <i>Spotify Song Revenue Estimator</i></p>
+      <main class="main-content">
+        <div class="revenuespot-container">
+          <div class="revenuespot-nav">
+            <a href="https://concourse.codes"><-- home</a>
           </div>
-          <video src="https://concourse-codes.s3.us-east-1.amazonaws.com/RevenueSpot_DemoClip.mp4" autoplay loop muted style="max-width: 40%; border: 1px solid #ccc; border-radius: 8px; margin-top: 1rem;"></video>
-          <div id="blog-content" style="line-height: 1.8; display: flex; flex-direction: column; justify-content: center; align-items:center; gap: 15px; padding: 0 40px;"></div>
-          <video src="https://concourse-codes.s3.us-east-1.amazonaws.com/RevenueSpot_DemoClip.mp4" autoplay loop muted style="max-width: 40%; border: 1px solid #ccc; border-radius: 8px; margin-top: 1rem;"></video>
-          <a href="https://github.com/aronsonben" rel="noopener noreferrer"><p><i>Take a peek at all my GitHub repositories here.</i></p></a>
+          <div class="revenuespot-header">
+            <div class="revenuespot-title">
+              <img src="../assets/img/spotify.png" alt="site-logo" class="concourse-icon" />
+              <h2>RevenueSpot</h2>
+              <p>&nbsp;| <i>Spotify Song Revenue Estimator</i></p>
+            </div>
+            <video src="https://concourse-codes.s3.us-east-1.amazonaws.com/RevenueSpot_DemoClip.mp4" autoplay loop muted class="revenuespot-video"></video>
+          </div>
+          <div id="blog-content" class="revenuespot-content"></div>
+          <video src="https://concourse-codes.s3.us-east-1.amazonaws.com/RevenueSpot_DemoClip.mp4" autoplay loop muted class="revenuespot-video"></video>
+          <div class="revenuespot-github">
+            <a href="https://github.com/aronsonben" rel="noopener noreferrer"><p><i>Take a peek at all my GitHub repositories here.</i></p></a>
+          </div>
         </div>
       </main>
     </div>

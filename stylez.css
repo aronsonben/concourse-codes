@@ -565,6 +565,143 @@ footer {
   color: #5A2F2F;
 }
 
+/* RevenueSpot Project Page Styles */
+.revenuespot-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.revenuespot-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.revenuespot-nav {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.revenuespot-nav a {
+  font-size: 0.9rem;
+  font-style: italic;
+  text-decoration: underline;
+  color: #253031;
+  transition: opacity 0.2s;
+}
+
+.revenuespot-nav a:hover {
+  opacity: 0.7;
+}
+
+.revenuespot-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.revenuespot-title h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.revenuespot-title p {
+  font-size: 1rem;
+  margin: 0;
+  color: #666;
+}
+
+.revenuespot-video {
+  max-width: 100%;
+  width: 600px;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 2rem auto;
+  display: block;
+}
+
+.revenuespot-content {
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.revenuespot-github {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.revenuespot-github a {
+  color: #253031;
+  text-decoration: none;
+  font-style: italic;
+  transition: opacity 0.2s;
+}
+
+.revenuespot-github a:hover {
+  opacity: 0.7;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .revenuespot-container {
+    padding: 15px;
+  }
+  
+  .revenuespot-title {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .revenuespot-title h2 {
+    font-size: 1.5rem;
+  }
+  
+  .revenuespot-title p {
+    font-size: 0.9rem;
+  }
+  
+  .revenuespot-video {
+    width: 100%;
+    max-width: 400px;
+    margin: 1.5rem auto;
+  }
+  
+  .revenuespot-content {
+    padding: 0 10px;
+  }
+  
+  .concourse-icon {
+    max-width: 28px;
+    max-height: 28px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .revenuespot-title h2 {
+    font-size: 1.25rem;
+  }
+  
+  .revenuespot-title p {
+    font-size: 0.8rem;
+  }
+  
+  .revenuespot-video {
+    max-width: 300px;
+    margin: 1rem auto;
+  }
+  
+  .revenuespot-content {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
 @media screen and (max-width: 540px) {
 
   /* **** sidebar **** */
@@ -572,6 +709,10 @@ footer {
     width: 15%;
     padding: 10px;
     border-right: 1px solid #253031;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0rem;
   }
 
   .sidebar .logo {
@@ -599,6 +740,9 @@ footer {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   /* Hide sidebar link text on mobile, show only icons */
