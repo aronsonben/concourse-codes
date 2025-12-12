@@ -97,12 +97,17 @@
               `;
               return;
             } 
+            // Ignore microblog, send that to its own page
+            if (page.includes('microblog')) {
+              window.location.href = 'microblog.html';
+              return;
+            }
             // Handle all other links
             fetch(page)
               .then(response => response.text())
               .then(data => {
                 mainContent.innerHTML = data;
-                if (page.includes('blog') && page !== 'microblog.html') {
+                if (page.includes('blog') && page != 'microblog.html') {
                   loadRSSFeed();
                 }
               })

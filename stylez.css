@@ -51,36 +51,17 @@ body {
   font-family: "Ubuntu Mono", "Courier New", Courier, monospace;
   line-height: 1.6;
 }
-/* header {
-  width: 100vw;
-  display: flex;
-  border-bottom: 1px solid #253031;
-}
-header div {
-  display: flex;
-  align-items: flex-end;
-  gap: 10px;
-  padding: 10px;
-}
-header a {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-}
-header h1 {
-  font-size: 1.5rem;
-}
-header img {
-  max-width: 38px;
-  max-height: 38px;
-  margin-right: 5px;
-} */
-
 .container {
   display: flex;
   flex: 1;
   width: 100%;
   max-width: 100vw;
+}
+.container-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 /* **** sidebar **** */
@@ -90,22 +71,22 @@ header img {
   border-right: 1px solid #253031;
 }
 
-.sidebar .logo {
+.logo {
   display: flex;
   align-items: flex-end;
   gap: 10px;
   padding: 10px 0;
 }
 
-.sidebar .logo a {
+.logo a {
   text-decoration: none;
   display: flex;
   align-items: center;
 }
-.sidebar .logo h1 {
+.logo h1 {
   font-size: 1.4rem;
 }
-.sidebar .logo img {
+.logo img {
   max-width: 38px;
   max-height: 38px;
   margin-right: 5px;
@@ -132,6 +113,10 @@ header img {
 .main-content {
   width: 80%;
   padding: 10px;
+}
+.main-content-microblog {
+  padding: 10px;
+  max-width: 400px;
 }
 
 .bio-header {
