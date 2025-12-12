@@ -66,7 +66,7 @@ body {
 
 /* **** sidebar **** */
 .sidebar {
-  width: 25%;
+  width: min-content;
   padding: 10px;
   border-right: 1px solid #253031;
 }
@@ -81,14 +81,16 @@ body {
 .logo a {
   text-decoration: none;
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 .logo h1 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  text-wrap: nowrap;
 }
 .logo img {
-  max-width: 38px;
-  max-height: 38px;
+  max-width: 70px;
+  /* max-height: 38px; */
   margin-right: 5px;
 }
 
