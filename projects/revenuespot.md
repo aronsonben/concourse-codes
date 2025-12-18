@@ -1,3 +1,9 @@
+---
+layout: layouts/base.njk
+title: RevenueSpot
+permalink: projects/revenuespot.html
+---
+
 RevenueSpot was an early project I worked on with the goal of learning a bit more about web scraping and how to use the Spotify API. I was also just genuinely curious about how much money each track on Spotify made. 
 
 ## Motivation

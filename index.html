@@ -1,153 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4KMFDS6BW1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+---
+layout: layouts/base.njk
+title: Concourse Codes
+permalink: index.html
+---
 
-      gtag('config', 'G-4KMFDS6BW1');
-    </script>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Concourse Codes</title>
-    <link rel="icon" href="./assets/img/paradise.png" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="stylez.css" />
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const rssFeedUrl = 'https://lowpolybrainblasts.pika.page/posts_feed'; // Replace with your RSS feed URL
+<div class="portfolio-header">
+  <div class="icon-header">
+    <img src="/assets/img/dracaena.png" alt="site-logo" class="concourse-icon-lg" style="max-width: 110px; max-height: 110px" />
+    <img src="/assets/img/ben_pixel.png" alt="ben-head-pixel" class="concourse-icon-xl" />
+    <img src="/assets/img/monstera.png" alt="site-logo" class="concourse-icon-lg" />
+  </div>
+  <div class="portfolio-intro">
+    <h2>Hey! I'm Ben Aronson.</h2>
+    <p>Welcome to <b>Concourse Codes</b>, my digital home and creative portfolio.</p>
+    <p>I'm a developer and artist exploring the intersection of code, design, and creativity. Below are some of my recent projects and work.</p>
+  </div>
+</div>
 
-        function loadRSSFeed() {
-          console.log('load rss feed')
-          const rssFeedContainer = document.getElementById('rss-feed');
-          if (!rssFeedContainer) return;
-
-          fetch(rssFeedUrl)
-            .then(response => response.text())
-            .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-            .then(data => {
-              let feed = data.getElementsByTagName("feed");
-              let bloglink = data.getElementsByTagName("link")[0];
-              const items = data.querySelectorAll("entry");
-              let html = '<div>';
-              items.forEach(el => {
-                const title = el.querySelector("title").textContent;
-                const link = el.querySelector("link").textContent;
-                html += `<p><a href="${link}" target="_blank">${title}</a></p>`;
-              });
-              html += '</div>';
-              rssFeedContainer.innerHTML = html;
-            })
-            .catch(error => {
-              console.error('Error fetching the RSS feed:', error);
-              rssFeedContainer.innerHTML = '<p>Failed to load RSS feed.</p>';
-            });
-        }
-
-        // Enable link to be clicked in sidebar
-        const homeLink = document.querySelector('.site-logo');
-        const homeSideLink = document.querySelector('.site-home-link');
-        const links = document.querySelectorAll('.sidebar a');
-        const mainContent = document.querySelector('.main-content');
-
-        // Add click event listener to the home link
-        homeLink.addEventListener('click', function(event) {
-          event.preventDefault();
-          mainContent.innerHTML = `
-            <div class="icon-header">
-              <img src="./assets/img/dracaena.png" alt="site-logo" class="concourse-icon-lg" style="max-width: 110px; max-height: 110px" />
-              <img src="./assets/img/ben_pixel.png" alt="ben-head-pixel" class="concourse-icon-xl" />
-              <img src="./assets/img/monstera.png" alt="site-logo" class="concourse-icon-lg" />
-            </div>
-            <p>Hey! I'm Ben Aronson and you've made it to Concourse.
-            <br /><br />Select a link on the left to explore my site.</p>
-          `;
-        });
-
-        // Add click event listeners to sidebar links
-        links.forEach(link => {
-          link.addEventListener('click', function(event) {
-            event.preventDefault();
-            // Google Analytics 4 event logging
-            if (typeof gtag === 'function') {
-              gtag('event', 'sidebar_link_click', {
-                'event_category': 'navigation',
-                'event_label': link.getAttribute('href')
-              });
-            }
-            var page = link.getAttribute('href');
-            // Handle home separately
-            if (page.includes('index')) {
-              mainContent.innerHTML = `
-                <div class="bio-header">
-                  <img src="./assets/img/ben_pixel.png" alt="ben-head-pixel" class="cicon concourse-icon-xl" id="ben-head-pixel" />
-                  <div class="bio-text">
-                    <p>Hey! I'm Ben Aronson.</p>
-                    <p>Welcome to <b>Concourse Codes</b>, my digital home in cyberspace.</p>
-                  </div>
-                </div>
-                <div style="padding: 10px 0;">
-                  <p>Click a link in the sidebar to explore my site.</p>
-                </div>
-              `;
-              return;
-            } 
-            // Ignore microblog, send that to its own page
-            if (page.includes('microblog')) {
-              window.location.href = 'microblog.html';
-              return;
-            }
-            // Handle all other links
-            fetch(page)
-              .then(response => response.text())
-              .then(data => {
-                mainContent.innerHTML = data;
-                if (page.includes('blog') && page != 'microblog.html') {
-                  loadRSSFeed();
-                }
-              })
-              .catch(error => console.error('Error loading page:', error));
-          });
-        });
-      });
-    </script>
-  </head>
-  <body>
-    <div class="container">
-      <aside class="sidebar">
-        <div class="logo">
-          <a href="index.html" class="site-logo">
-            <img src="./assets/img/paradise.png" alt="site-logo" />
-            <h1>Concourse Codes</h1>
-          </a>
-          <!-- <p style="font-size: 0.75rem; margin-bottom: 0.3rem">by Ben Aronson</p> -->
-        </div>
-        <ul>
-            <li><a href="index.html" class="icon-link"><img src="./assets/img/planecloud.png" alt="ben-head-pixel" class="concourse-icon-xs" />Home</a></li>
-            <li><a href="about.html" class="icon-link"><img src="./assets/img/ben_pixel.png" alt="ben-head-pixel" class="concourse-icon-xs" id="ben-head-pixel" />About</a></li>
-            <li><a href="projects.html" class="icon-link"><img src="./assets/img/dracaena.png" alt="site-logo" class="concourse-icon-xs" />Projects</a></li>
-            <li><a href="blog.html" class="icon-link"><img src="./assets/img/monstera.png" alt="site-logo" class="concourse-icon-xs" />Blog</a></li>
-            <li><a href="microblog.html" class="icon-link"><img src="./assets/img/swatch.png" alt="microblog-icon" class="concourse-icon-xs" />Microblog</a></li>
-            <li><a href="contact.html" class="icon-link"><img src="./assets/img/mailbush.png" alt="site-logo" class="concourse-icon-xs" />Contact</a></li>
-        </ul>
-      </aside>
-      <main class="main-content">
-        <div class="bio-header">
-          <img src="./assets/img/ben_pixel.png" alt="ben-head-pixel" class="cicon concourse-icon-xl" id="ben-head-pixel" />
-          <div class="bio-text">
-            <p>Hey! I'm Ben Aronson.</p>
-            <p>Welcome to <b>Concourse Codes</b>, my digital home in cyberspace.</p>
-          </div>
-        </div>
-        <div style="padding: 10px 0;">
-          <p>Click a link in the sidebar to explore my site.</p>
-        </div>
-      </main>
+<section class="portfolio-grid">
+  <div class="portfolio-item">
+    <div class="portfolio-item-header">
+      <img src="/assets/img/dracaena.png" alt="RevenueSpot project" class="portfolio-icon" />
+      <h3>RevenueSpot</h3>
     </div>
-  </body>
-</html>
+    <p>An exploration of web scraping and the Spotify API. Discovered how much money tracks actually generate and visualized streaming economics.</p>
+    <ul class="tech-tags">
+      <li>Node.js</li>
+      <li>Puppeteer</li>
+      <li>Spotify API</li>
+      <li>Web Scraping</li>
+    </ul>
+    <a href="/projects/revenuespot.html" class="project-link">View Project →</a>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-item-header">
+      <img src="/assets/img/monstera.png" alt="Concourse Codes" class="portfolio-icon" />
+      <h3>This Site</h3>
+    </div>
+    <p>A minimalist HTML & CSS portfolio and personal website. Intentionally kept simple and artistic, with a sidebar navigation system and no build tools.</p>
+    <ul class="tech-tags">
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>Vanilla JS</li>
+      <li>No Dependencies</li>
+    </ul>
+    <a href="/about.html" class="project-link">Learn More →</a>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-item-header">
+      <img src="/assets/img/swatch.png" alt="Creative Work" class="portfolio-icon" />
+      <h3>Creative Explorations</h3>
+    </div>
+    <p>A collection of artistic experiments combining code, design, and creative thinking. From interactive visualizations to written reflections on digital art.</p>
+    <ul class="tech-tags">
+      <li>Creative Coding</li>
+      <li>Design</li>
+      <li>Art</li>
+      <li>Writing</li>
+    </ul>
+    <a href="/blog.html" class="project-link">Explore →</a>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-item-header">
+      <img src="/assets/img/dracaena.png" alt="NewsDash project" class="portfolio-icon" />
+      <h3>NewsDash</h3>
+    </div>
+    <p>A dynamic news aggregation and personalization platform. Curate your own news feeds from multiple sources with an intuitive, modern interface.</p>
+    <ul class="tech-tags">
+      <li>React</li>
+      <li>Node.js</li>
+      <li>News APIs</li>
+      <li>Full Stack</li>
+    </ul>
+    <a href="/projects/newsdash.html" class="project-link">View Project →</a>
+  </div>
+</section>
+
+<section class="portfolio-cta">
+  <h3>Want to work together or just say hi?</h3>
+  <a href="/contact.html" class="cta-button">Get in Touch</a>
+</section>

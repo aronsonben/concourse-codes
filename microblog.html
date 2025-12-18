@@ -1,72 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>microblog</title>
-    <link rel="icon" href="./assets/img/paradise.png" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="stylez.css" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4KMFDS6BW1"></script>
-    <script>
-      // Additional tracking genned by AI, copy elsewhere later
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+---
+layout: layouts/microblog.njk
+title: microblog
+permalink: microblog.html
+headExtra: |
+  <script>
+    // Additional tracking genned by AI, copy elsewhere later
+    gtag('config', 'G-4KMFDS6BW1', {
+      'page_title': 'Microblog - Concourse Codes',
+      'page_location': window.location.href,
+      'content_group1': 'microblog',
+      'content_group2': 'interactive_page',
+      'custom_map': {
+        'custom_dimension_1': 'page_type',
+        'custom_dimension_2': 'user_interaction'
+      }
+    });
 
-      gtag('config', 'G-4KMFDS6BW1', {
-        'page_title': 'Microblog - Concourse Codes',
-        'page_location': window.location.href,
-        'content_group1': 'microblog',
-        'content_group2': 'interactive_page',
-        'custom_map': {
-          'custom_dimension_1': 'page_type',
-          'custom_dimension_2': 'user_interaction'
-        }
-      });
+    // Track page view with additional context
+    gtag('event', 'page_view', {
+      'page_type': 'microblog',
+      'page_section': 'community',
+      'engagement_time_msec': 100,
+      'page_referrer': document.referrer,
+      'user_agent': navigator.userAgent.substring(0, 100) // Truncated for privacy
+    });
+  </script>
+---
 
-      // Track page view with additional context
-      gtag('event', 'page_view', {
-        'page_type': 'microblog',
-        'page_section': 'community',
-        'engagement_time_msec': 100,
-        'page_referrer': document.referrer,
-        'user_agent': navigator.userAgent.substring(0, 100) // Truncated for privacy
-      });
-    </script>
-    <script>
-      const handleSubmit = event => {
-        event.preventDefault();
-
-        const myForm = event.target;
-        const formData = new FormData(myForm);
-
-        fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString()
-          })
-          .then(() => console.log("Form successfully submitted"))
-          .catch(error => alert(error));
-        };
-
-        document.querySelector("form").addEventListener("submit", handleSubmit);
-    </script>
-</head>
-<body>
-  <div class="container-center">
+<div class="container-center">
     <main class="main-content-microblog">
       <div class="logo">
-        <a href="index.html" class="site-logo">
-          <img src="./assets/img/paradise.png" alt="site-logo" />
+        <a href="/index.html" class="site-logo">
+          <img src="/assets/img/paradise.png" alt="site-logo" />
           <h1>Concourse Codes</h1>
         </a>
       </div>
       <div style="text-align: left; margin-bottom: 20px;">
-        <a href="index.html" style="font-size: 0.8rem; text-decoration: none; color: #666;">&lt;- back</a>
+        <a href="/index.html" style="font-size: 0.8rem; text-decoration: none; color: #666;">&lt;- back</a>
       </div>
       <div class="center-nav-forum">
         <p class="proverb-aesthetic">drop by and say hi :)</p>
@@ -276,5 +246,3 @@
       new MessageBoard();
     });
   </script>
-</body>
-</html>
