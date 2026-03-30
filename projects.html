@@ -5,7 +5,7 @@ permalink: projects.html
 ---
 
 <style>
-  #project-table {
+  #project-table-og {
     width: 100%;
     border: double 5px #a06539;
     margin: 20px 0;
@@ -22,6 +22,64 @@ permalink: projects.html
   .proj-table-link {
     text-decoration: none;
   }
+
+  .project-table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    width: 100%;
+  }
+  .project-table thead, tfoot {
+    background-color: rgb(236 229 190);
+    font-size: 0.95rem;
+    font-weight: bold;
+  }
+
+  .project-table th, td {
+    border: 4px double rgb(78, 78, 78);
+    padding: 8px 10px;
+  }
+
+  .project-table td:last-of-type {
+    text-align: center;
+  }
+
+  .project-table .project-title {
+    font-size: 0.9rem;
+  }
+
+  .project-table tbody > tr:nth-of-type(even) {
+    background-color: rgb(255 250 225);
+  }
+
+  .project-table .icon-col {
+    width: 20px;
+    text-align: center;
+  }
+
+  .project-table .project-icon {
+    max-width: 20px;
+    height: auto;
+  }
+
+  @media screen and (max-width: 600px) {
+    .project-table .icon-col {
+      display: none;
+    }
+    .project-table .status-col {
+      display: none;
+    }
+  }
+
+  .project-table tfoot th {
+    text-align: right;
+  }
+
+  .project-table tfoot td {
+    font-weight: bold;
+  }
+
   @media screen and (max-width: 600px) {
     .statusCol {
       visibility: hidden;
@@ -33,11 +91,133 @@ permalink: projects.html
     }
   }
 </style>
-<div>
+<div style="margin: 10px;">
   <h2>Projects</h2>
   <a href="https://github.com/aronsonben" rel="noopener noreferrer" style="font-size: 0.75rem"><p><i>Take a peek at all my GitHub repositories here.</i></p></a>
-  <p style="font-size: 0.65rem"><i></i></p>
-  <table id="project-table">
+  <br/>
+  <table class="project-table">
+    <thead class="headers">
+      <td class="icon-col"></td>
+      <td>Title</td>
+      <td>Description</td>
+      <td class="status-col">Status</td>
+    </thead>
+    <tr class="project-row">
+      <td class="icon-col">
+        <img src="./assets/img/swatch.png" alt="site-logo" class="project-icon" />
+      </td>
+      <td class="project-title">
+        <a href="https://colors.concourse.codes" target="_blank" rel="noopener noreferrer">Synthesia</a>
+      </td>
+      <td>
+        <p style="font-size: 0.8rem;"><i>Crowdsourced color palettes for your music.</i></p>
+      </td>
+      <td class="status-col">
+        <a href="https://colors.concourse.codes" target="_blank" rel="noopener noreferrer">Live</a>
+      </td>
+    </tr>
+    <tr class="project-row">
+      <td class="icon-col">
+        <img src="./assets/img/proj/newsdash.jpg" alt="site-logo" class="project-icon" />
+      </td>
+      <td class="project-title">
+        <a href="https://news.concourse.codes" target="_blank" rel="noopener noreferrer">NewsDash</a>
+      </td>
+      <td>
+        <p style="font-size: 0.8rem;"><i>LLM-powered search summaries for my passionate topics</i></p>
+      </td>
+      <td class="status-col">
+        <a href="https://news.concourse.codes" target="_blank" rel="noopener noreferrer">Live</a>
+      </td>
+    </tr>
+    <tr class="project-row">
+      <td class="icon-col">
+        <span>🧠</span>
+      </td>
+      <td class="project-title">
+        <a href="https://brain.concourse.codes" target="_blank" rel="noopener noreferrer">braindump</a>
+      </td>
+      <td>
+        <p style="font-size: 0.8rem;"><i>Keep track of the things that are actually important</i></p>
+      </td>
+      <td class="status-col">
+        <a href="https://brain.concourse.codes" target="_blank" rel="noopener noreferrer">Live</a>
+      </td>
+    </tr>
+    <tr class="project-row">
+      <td class="icon-col">
+        <img src="./assets/img/proj/arena.jpeg" alt="site-logo" class="project-icon" />
+      </td>
+      <td class="project-title">
+        <a href="https://arena.concourse.codes" target="_blank" rel="noopener noreferrer">Arena Fine Tuner</a>
+      </td>
+      <td>
+        <p style="font-size: 0.8rem;"><i>Fine tune nano banana on Are.na channels</i></p>
+      </td>
+      <td class="status-col">
+        <a href="https://arena.concourse.codes" target="_blank" rel="noopener noreferrer">Live</a>
+      </td>
+    </tr>
+    <tr class="project-row">
+      <td class="icon-col">
+        <img src="./assets/img/proj/townflag.jpeg" alt="site-logo" class="project-icon" />
+      </td>
+      <td class="project-title">
+        <a href="https://massachusetts-town-flag-generator-640157164110.us-west1.run.app/" target="_blank" rel="noopener noreferrer">MA Town Flag Generator</a>
+      </td>
+      <td>
+        <p style="font-size: 0.8rem;"><i>Generate new town flags for towns</i></p>
+      </td>
+      <td class="status-col">
+        <a href="https://massachusetts-town-flag-generator-640157164110.us-west1.run.app/" target="_blank" rel="noopener noreferrer">Live</a>
+      </td>
+    </tr>
+    <tr class="project-row">
+      <td class="icon-col">
+        <img src="./assets/img/proj/masssave.jpg" alt="site-logo" class="project-icon" />
+      </td>
+      <td class="project-title">
+        <a href="https://rej.concourse.codes" target="_blank" rel="noopener noreferrer">MassSave</a>
+      </td>
+      <td>
+        <p style="font-size: 0.8rem;"><i>analyze if MassSave is worth it</i></p>
+      </td>
+      <td class="status-col">
+        <a href="https://rej.concourse.codes" target="_blank" rel="noopener noreferrer">Live</a>
+      </td>
+    </tr>
+    <tr class="project-row">
+      <td class="icon-col">
+        <span>C</span>
+      </td>
+      <td class="project-title">
+        <a href="https://concourse-qr-180066961304.us-west1.run.app/" target="_blank" rel="noopener noreferrer">ConcourseQR</a>
+      </td>
+      <td>
+        <p style="font-size: 0.8rem;"><i>vibecoded QR code generator</i></p>
+      </td>
+      <td class="status-col">
+        <a href="https://concourse-qr-180066961304.us-west1.run.app/" target="_blank" rel="noopener noreferrer">Live</a>
+      </td>
+    </tr>
+    <tr class="project-row">
+      <td class="icon-col">
+        <span></span>
+      </td>
+      <td class="project-title">
+        <a href="project/revenuespot.html" target="_blank" rel="noopener noreferrer">RevenueSpot</a>
+      </td>
+      <td>
+        <p style="font-size: 0.8rem;"><i>How much money did that song actually make?</i></p>
+      </td>
+      <td class="status-col">
+        <a href="project/revenuespot.html" target="_blank" rel="noopener noreferrer">Retired</a>
+      </td>
+    </tr>
+  </table>
+  
+  
+  <!-- <table id="project-table-og">
     <tr class="projectRow">
       <td class="iconCol">
         <a href="https://colors.concourse.codes/" target="_blank" class="proj-table-link">
@@ -119,4 +299,4 @@ permalink: projects.html
       <li><b>Yelp Audience Builder</b> - discover global cuisines around you</li>
     </ul>
   </div>
-</div>
+</div> -->
