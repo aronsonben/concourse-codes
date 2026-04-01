@@ -749,6 +749,278 @@ footer {
   color: #5A2F2F;
 }
 
+/* Commit Board Styles */
+.commit-calendar-container {
+  margin: 30px 0;
+  padding: 20px;
+  background-color: #F8F5E8;
+  border: 1px solid #D4C5A9;
+  border-radius: 5px;
+}
+
+.commit-calendar {
+  margin: 20px 0;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 40px repeat(52, 12px);
+  grid-template-rows: 20px repeat(7, 12px);
+  gap: 3px;
+  font-size: 0.7rem;
+  color: #6B5B47;
+}
+
+.month-labels {
+  display: contents;
+}
+
+.month-labels span {
+  font-size: 0.7rem;
+  color: #6B5B47;
+  text-align: left;
+  padding-left: 2px;
+}
+
+.day-label {
+  font-size: 0.7rem;
+  color: #6B5B47;
+  text-align: right;
+  padding-right: 5px;
+  line-height: 12px;
+}
+
+.calendar-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid #E6DCC6;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.calendar-cell:hover {
+  border-color: #253031;
+  transform: scale(1.3);
+}
+
+/* GitHub-style intensity levels */
+.calendar-cell.level-0 {
+  background-color: #FCFAF0;
+}
+
+.calendar-cell.level-1 {
+  background-color: #D4C5A9;
+}
+
+.calendar-cell.level-2 {
+  background-color: #B8A47E;
+}
+
+.calendar-cell.level-3 {
+  background-color: #8B7355;
+}
+
+.calendar-cell.level-4 {
+  background-color: #6B5B47;
+}
+
+.calendar-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+  gap: 3px;
+}
+
+.legend-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid #E6DCC6;
+}
+
+.legend-box.level-0 {
+  background-color: #FCFAF0;
+}
+
+.legend-box.level-1 {
+  background-color: #D4C5A9;
+}
+
+.legend-box.level-2 {
+  background-color: #B8A47E;
+}
+
+.legend-box.level-3 {
+  background-color: #8B7355;
+}
+
+.legend-box.level-4 {
+  background-color: #6B5B47;
+}
+
+/* Commit Form Styles */
+.commit-form {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #D4C5A9;
+  border-radius: 5px;
+  background-color: #F8F5E8;
+}
+
+.commit-form form {
+  margin: 0;
+}
+
+.commit-form label {
+  display: block;
+  position: relative;
+}
+
+.commit-form input[type="text"],
+.commit-form input[type="password"],
+.commit-form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #D4C5A9;
+  border-radius: 3px;
+  font-family: 'windowsregular', "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  background-color: #FCFAF0;
+  color: #253031;
+}
+
+.commit-form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.char-counter {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  font-size: 0.75rem;
+  color: #6B5B47;
+  background-color: #F8F5E8;
+  padding: 2px 5px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.commit-form button {
+  background-color: #253031;
+  color: #FCFAF0;
+  border: 1px solid #253031;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'windowsregular', "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.commit-form button:hover {
+  background-color: #3A4041;
+  border-color: #3A4041;
+}
+
+/* Commits Display */
+.commits-container {
+  max-height: 600px;
+  overflow-y: auto;
+  border: 1px solid #D4C5A9;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: #FCFAF0;
+}
+
+.date-group {
+  margin-bottom: 25px;
+}
+
+.date-header {
+  font-size: 0.85rem;
+  color: #6B5B47;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #E6DCC6;
+  font-weight: normal;
+}
+
+.commit-card {
+  border: 1px solid #E6DCC6;
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 12px;
+  background-color: #F8F5E8;
+  box-shadow: 0 1px 3px rgba(37, 48, 49, 0.1);
+}
+
+.commit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.75rem;
+}
+
+.commit-timestamp {
+  color: #6B5B47;
+  font-style: italic;
+}
+
+.commit-char-count {
+  color: #8B7355;
+  font-size: 0.7rem;
+}
+
+.commit-content {
+  line-height: 1.5;
+  font-size: 0.9rem;
+  word-wrap: break-word;
+  color: #253031;
+}
+
+.no-messages {
+  text-align: center;
+  color: #6B5B47;
+  font-style: italic;
+  padding: 30px 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .commit-calendar-container {
+    padding: 15px;
+    overflow-x: auto;
+  }
+  
+  .calendar-grid {
+    grid-template-columns: 35px repeat(52, 10px);
+    grid-template-rows: 18px repeat(7, 10px);
+    gap: 2px;
+  }
+  
+  .calendar-cell,
+  .legend-box {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .month-labels span,
+  .day-label {
+    font-size: 0.65rem;
+  }
+  
+  .commits-container {
+    max-height: 400px;
+  }
+}
+
 /* RevenueSpot Project Page Styles */
 .revenuespot-container {
   max-width: 1200px;

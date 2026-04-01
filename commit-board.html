@@ -1,0 +1,416 @@
+---
+layout: layouts/base.njk
+title: Commit Board
+permalink: commit-board.html
+headExtra: |
+  <script>
+    // Additional tracking for commit board page
+    gtag('config', 'G-4KMFDS6BW1', {
+      'page_title': 'Commit Board - Concourse Codes',
+      'page_location': window.location.href,
+      'content_group1': 'commit_board',
+      'content_group2': 'interactive_page',
+      'custom_map': {
+        'custom_dimension_1': 'page_type',
+        'custom_dimension_2': 'user_interaction'
+      }
+    });
+
+    // Track page view with additional context
+    gtag('event', 'page_view', {
+      'page_type': 'commit_board',
+      'page_section': 'personal',
+      'engagement_time_msec': 100,
+      'page_referrer': document.referrer,
+      'user_agent': navigator.userAgent.substring(0, 100)
+    });
+  </script>
+---
+
+<div class="container-center">
+    <main class="main-content-microblog">
+      <div class="logo">
+        <a href="/index.html" class="site-logo">
+          <img src="/assets/img/paradise.png" alt="site-logo" />
+          <h1>Concourse Codes</h1>
+        </a>
+      </div>
+      <div style="text-align: left; margin-bottom: 20px;">
+        <a href="/index.html" style="font-size: 0.8rem; text-decoration: none; color: #666;">&lt;- back</a>
+      </div>
+      <div class="center-nav-forum">
+        <p class="proverb-aesthetic">my daily commit board 📝</p>
+        
+        <!-- GitHub-style Contribution Calendar -->
+        <div class="commit-calendar-container">
+          <h3 style="margin-bottom: 10px; font-size: 0.9rem; color: #666;">Activity</h3>
+          <div id="commitCalendar" class="commit-calendar"></div>
+          <div class="calendar-legend">
+            <span style="font-size: 0.75rem; color: #888; margin-right: 10px;">Less</span>
+            <div class="legend-box level-0"></div>
+            <div class="legend-box level-1"></div>
+            <div class="legend-box level-2"></div>
+            <div class="legend-box level-3"></div>
+            <div class="legend-box level-4"></div>
+            <span style="font-size: 0.75rem; color: #888; margin-left: 10px;">More</span>
+          </div>
+        </div>
+        
+        <!-- Note Submission Form -->
+        <div class="forum-container">
+          <!-- Hidden form for Netlify form detection -->
+          <form name="commit-board" netlify netlify-honeypot="bot-field" hidden>
+            <input type="text" name="note" />
+          </form>
+          
+          <div class="commit-form">
+            <form 
+              id="commitForm" 
+              name="commit-board"
+            >
+              <p>
+                <label>Note (max 160 characters): 
+                  <textarea 
+                    id="noteText" 
+                    name="note" 
+                    placeholder="What's on your mind?" 
+                    maxlength="160"
+                    rows="3"
+                    required
+                  ></textarea>
+                  <span id="charCounter" class="char-counter">160</span>
+                </label>
+              </p>
+              <p>
+                <label>Password: 
+                  <input 
+                    type="password" 
+                    id="notePassword" 
+                    name="password" 
+                    placeholder="Enter password to post"
+                    required 
+                    autocomplete="current-password"
+                  />
+                </label>
+              </p>
+              <p>
+                <button type="submit">Commit Note</button>
+              </p>
+            </form>
+          </div>
+          
+          <!-- Notes Display -->
+          <div class="commits-container">
+            <h3 style="margin-bottom: 15px; font-size: 1rem; color: #666;">Recent Commits</h3>
+            <div id="commitBoard"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer>
+    <p>© bo rice. 2025</p>
+  </footer>
+
+  <script>
+    // Commit Board functionality with Netlify Functions
+    class CommitBoard {
+      constructor() {
+        this.notes = [];
+        this.calendarData = {};
+        this.init();
+      }
+
+      async init() {
+        await this.loadNotes();
+        this.buildCalendarData();
+        this.renderCalendar();
+        this.displayNotes();
+        this.setupEventListeners();
+      }
+
+      setupEventListeners() {
+        const form = document.getElementById('commitForm');
+        const textarea = document.getElementById('noteText');
+        const charCounter = document.getElementById('charCounter');
+        
+        // Character counter
+        textarea.addEventListener('input', () => {
+          const remaining = 160 - textarea.value.length;
+          charCounter.textContent = remaining;
+          charCounter.style.color = remaining < 20 ? '#d73a49' : '#666';
+        });
+        
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          this.handleSubmit();
+        });
+      }
+
+      async handleSubmit() {
+        const noteInput = document.getElementById('noteText');
+        const passwordInput = document.getElementById('notePassword');
+        
+        const note = noteInput.value.trim();
+        const password = passwordInput.value;
+        
+        if (note && password) {
+          try {
+            const response = await fetch('/.netlify/functions/submit-note', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ note, password })
+            });
+            
+            if (response.ok) {
+              const result = await response.json();
+              
+              // Clear form
+              noteInput.value = '';
+              passwordInput.value = '';
+              document.getElementById('charCounter').textContent = '160';
+              
+              // Add note to local display (optimistic update)
+              const newNote = {
+                id: Date.now(),
+                content: note,
+                timestamp: new Date().toISOString()
+              };
+              
+              this.notes.unshift(newNote);
+              this.buildCalendarData();
+              this.renderCalendar();
+              this.displayNotes();
+              
+              // Save to localStorage as backup
+              localStorage.setItem('commitNotes', JSON.stringify(this.notes));
+              
+              // Focus back to textarea
+              noteInput.focus();
+              
+              // Show success message
+              this.showMessage('Note committed successfully! 🎉', 'success');
+            } else {
+              const error = await response.json();
+              this.showMessage(error.error || 'Invalid password or error posting note', 'error');
+            }
+          } catch (error) {
+            console.error('Error submitting note:', error);
+            this.showMessage('Error posting note. Please try again.', 'error');
+          }
+        }
+      }
+
+      async loadNotes() {
+        try {
+          const response = await fetch('/.netlify/functions/get-notes');
+          
+          if (response.ok) {
+            this.notes = await response.json();
+          } else {
+            console.error('Failed to fetch notes:', response.status);
+            // Fallback to localStorage
+            const stored = localStorage.getItem('commitNotes');
+            this.notes = stored ? JSON.parse(stored) : [];
+          }
+        } catch (e) {
+          console.error('Error loading notes:', e);
+          // Fallback to localStorage
+          const stored = localStorage.getItem('commitNotes');
+          this.notes = stored ? JSON.parse(stored) : [];
+        }
+      }
+
+      buildCalendarData() {
+        this.calendarData = {};
+        
+        this.notes.forEach(note => {
+          const date = new Date(note.timestamp);
+          const dateKey = date.toISOString().split('T')[0]; // YYYY-MM-DD
+          
+          if (!this.calendarData[dateKey]) {
+            this.calendarData[dateKey] = { count: 0, notes: [] };
+          }
+          
+          this.calendarData[dateKey].count++;
+          this.calendarData[dateKey].notes.push(note);
+        });
+      }
+
+      renderCalendar() {
+        const container = document.getElementById('commitCalendar');
+        const today = new Date();
+        const oneYearAgo = new Date(today);
+        oneYearAgo.setFullYear(today.getFullYear() - 1);
+        
+        // Start from the most recent Sunday
+        const startDate = new Date(today);
+        startDate.setDate(today.getDate() - today.getDay());
+        
+        // Calculate weeks to show (52 weeks)
+        const weeks = 52;
+        const days = weeks * 7;
+        
+        let html = '<div class="calendar-grid">';
+        
+        // Month labels
+        html += '<div class="month-labels">';
+        const monthsShown = new Set();
+        for (let i = 0; i < weeks; i++) {
+          const weekStart = new Date(startDate);
+          weekStart.setDate(startDate.getDate() - (days - i * 7));
+          const month = weekStart.toLocaleDateString('en-US', { month: 'short' });
+          const monthNum = weekStart.getMonth();
+          
+          if (!monthsShown.has(monthNum) || i === 0) {
+            html += `<span style="grid-column: ${i + 2};">${month}</span>`;
+            monthsShown.add(monthNum);
+          }
+        }
+        html += '</div>';
+        
+        // Day labels (Mon, Wed, Fri)
+        const dayLabels = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
+        dayLabels.forEach((label, idx) => {
+          if (label) {
+            html += `<div class="day-label" style="grid-row: ${idx + 2};">${label}</div>`;
+          }
+        });
+        
+        // Calendar cells
+        for (let week = 0; week < weeks; week++) {
+          for (let day = 0; day < 7; day++) {
+            const currentDate = new Date(startDate);
+            currentDate.setDate(startDate.getDate() - (days - (week * 7 + day)));
+            
+            const dateKey = currentDate.toISOString().split('T')[0];
+            const data = this.calendarData[dateKey];
+            const count = data ? data.count : 0;
+            
+            // Determine intensity level (0-4)
+            let level = 0;
+            if (count > 0) level = 1;
+            if (count >= 3) level = 2;
+            if (count >= 5) level = 3;
+            if (count >= 7) level = 4;
+            
+            const col = week + 2; // Offset for day labels
+            const row = day + 2; // Offset for month labels
+            
+            html += `<div 
+              class="calendar-cell level-${level}" 
+              data-date="${dateKey}"
+              data-count="${count}"
+              style="grid-column: ${col}; grid-row: ${row};"
+              title="${count} note${count !== 1 ? 's' : ''} on ${currentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}"
+            ></div>`;
+          }
+        }
+        
+        html += '</div>';
+        container.innerHTML = html;
+      }
+
+      displayNotes() {
+        const container = document.getElementById('commitBoard');
+        
+        if (this.notes.length === 0) {
+          container.innerHTML = '<div class="no-messages">No notes yet. Start committing your thoughts!</div>';
+          return;
+        }
+        
+        // Group notes by date
+        const groupedNotes = {};
+        this.notes.forEach(note => {
+          const date = new Date(note.timestamp);
+          const dateKey = date.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          });
+          
+          if (!groupedNotes[dateKey]) {
+            groupedNotes[dateKey] = [];
+          }
+          groupedNotes[dateKey].push(note);
+        });
+        
+        // Render grouped notes
+        let html = '';
+        Object.keys(groupedNotes).forEach(dateKey => {
+          html += `<div class="date-group">
+            <h4 class="date-header">${dateKey}</h4>`;
+          
+          groupedNotes[dateKey].forEach(note => {
+            html += this.createNoteHTML(note);
+          });
+          
+          html += '</div>';
+        });
+        
+        container.innerHTML = html;
+      }
+
+      createNoteHTML(note) {
+        const timestamp = this.formatTimestamp(note.timestamp);
+        const charCount = note.content.length;
+        
+        return `
+          <div class="commit-card">
+            <div class="commit-header">
+              <span class="commit-timestamp">${timestamp}</span>
+              <span class="commit-char-count">${charCount}/160</span>
+            </div>
+            <div class="commit-content">${this.escapeHtml(note.content)}</div>
+          </div>
+        `;
+      }
+
+      showMessage(text, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `status-message ${type}`;
+        messageDiv.textContent = text;
+        
+        const form = document.querySelector('.commit-form');
+        form.insertBefore(messageDiv, form.firstChild);
+        
+        setTimeout(() => {
+          messageDiv.remove();
+        }, 3000);
+      }
+
+      formatTimestamp(isoString) {
+        const date = new Date(isoString);
+        const now = new Date();
+        const diffMs = now - date;
+        const diffMinutes = Math.floor(diffMs / 60000);
+        const diffHours = Math.floor(diffMs / 3600000);
+        const diffDays = Math.floor(diffMs / 86400000);
+        
+        if (diffMinutes < 1) return 'just now';
+        if (diffMinutes < 60) return `${diffMinutes}m ago`;
+        if (diffHours < 24) return `${diffHours}h ago`;
+        if (diffDays < 7) return `${diffDays}d ago`;
+        
+        return date.toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          minute: '2-digit',
+          hour12: true
+        });
+      }
+
+      escapeHtml(unsafe) {
+        return unsafe
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+    }
+
+    // Initialize the commit board when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      new CommitBoard();
+    });
+  </script>
