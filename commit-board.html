@@ -144,67 +144,6 @@ headExtra: |
           charCounter.textContent = remaining;
           charCounter.style.color = remaining < 20 ? '#d73a49' : '#666';
         });
-        
-        // form.addEventListener('submit', (e) => {
-        //   e.preventDefault();
-        //   this.handleSubmit(e);
-        // });
-      }
-
-      async handleSubmit() {
-        const noteInput = document.getElementById('noteText');
-        const passwordInput = document.getElementById('notePassword');
-        
-        const note = noteInput.value.trim();
-        const password = passwordInput.value;
-        
-        if (note && password) {
-          try {
-            console.log("[cb] trying to hit endpoint now...");
-
-            const response = await fetch('/.netlify/functions/submit-note', {
-              method: 'POST',
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ note, password })
-            });
-            
-            if (response.ok) {
-              const result = await response.json();
-              
-              // Clear form
-              noteInput.value = '';
-              passwordInput.value = '';
-              document.getElementById('charCounter').textContent = '160';
-              
-              // Add note to local display (optimistic update)
-              const newNote = {
-                id: Date.now(),
-                content: note,
-                timestamp: new Date().toISOString()
-              };
-              
-              this.notes.unshift(newNote);
-              this.buildCalendarData();
-              this.renderCalendar();
-              this.displayNotes();
-              
-              // Save to localStorage as backup
-              localStorage.setItem('commitNotes', JSON.stringify(this.notes));
-              
-              // Focus back to textarea
-              noteInput.focus();
-              
-              // Show success message
-              this.showMessage('Note committed successfully! 🎉', 'success');
-            } else {
-              const error = await response.json();
-              this.showMessage(error.error || 'Invalid password or error posting note', 'error');
-            }
-          } catch (error) {
-            console.error('Error submitting note:', error);
-            this.showMessage('Error posting note. Please try again.', 'error');
-          }
-        }
       }
 
       async loadNotes() {
@@ -241,54 +180,93 @@ headExtra: |
           
           this.calendarData[dateKey].count++;
           this.calendarData[dateKey].notes.push(note);
+
+          console.log("[cal] datekey: ", this.calendarData[dateKey]);
         });
       }
 
       renderCalendar() {
         const container = document.getElementById('commitCalendar');
         const today = new Date();
-        const oneYearAgo = new Date(today);
-        oneYearAgo.setFullYear(today.getFullYear() - 1);
-        
-        // Start from the most recent Sunday
-        const startDate = new Date(today);
-        startDate.setDate(today.getDate() - today.getDay());
         
         // Calculate weeks to show (52 weeks)
         const weeks = 52;
-        const days = weeks * 7;
         
         let html = '<div class="calendar-grid">';
         
-        // Month labels
+        // Month labels - show month with year (e.g., "Apr '26")
         html += '<div class="month-labels">';
-        const monthsShown = new Set();
+        
+        // First, calculate which weeks belong to which months
+        const monthRanges = [];
+        let currentMonthKey = null;
+        let rangeStart = 0;
+        let currentLabel = '';
+        
         for (let i = 0; i < weeks; i++) {
-          const weekStart = new Date(startDate);
-          weekStart.setDate(startDate.getDate() - (days - i * 7));
-          const month = weekStart.toLocaleDateString('en-US', { month: 'short' });
-          const monthNum = weekStart.getMonth();
+          const weekStartDaysAgo = i * 7;
+          const weekStart = new Date(today);
+          weekStart.setDate(today.getDate() - weekStartDaysAgo);
           
-          if (!monthsShown.has(monthNum) || i === 0) {
-            html += `<span style="grid-column: ${i + 2};">${month}</span>`;
-            monthsShown.add(monthNum);
+          const monthYearKey = `${weekStart.getFullYear()}-${weekStart.getMonth()}`;
+          const month = weekStart.toLocaleDateString('en-US', { month: 'short' });
+          const year = weekStart.getFullYear().toString().slice(-2);
+          const monthYear = `${month} '${year}`;
+          
+          if (currentMonthKey !== monthYearKey) {
+            // Close previous range if exists
+            if (currentMonthKey !== null) {
+              monthRanges.push({
+                start: rangeStart,
+                end: i - 1,
+                label: currentLabel
+              });
+            }
+            // Start new range
+            currentMonthKey = monthYearKey;
+            currentLabel = monthYear;
+            rangeStart = i;
           }
         }
-        html += '</div>';
         
-        // Day labels (Mon, Wed, Fri)
-        const dayLabels = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
-        dayLabels.forEach((label, idx) => {
-          if (label) {
-            html += `<div class="day-label" style="grid-row: ${idx + 2};">${label}</div>`;
-          }
+        // Add the final range
+        if (currentMonthKey !== null) {
+          monthRanges.push({
+            start: rangeStart,
+            end: weeks - 1,
+            label: currentLabel
+          });
+        }
+        
+        // Now render month labels spanning their respective columns
+        monthRanges.forEach((range) => {
+          const colStart = range.start + 2; // +2 for day label offset
+          const colEnd = range.end + 3; // +3 because grid-column-end is exclusive
+          html += `<span style="grid-column: ${colStart} / ${colEnd}; text-align: left;">${range.label}</span>`;
         });
         
-        // Calendar cells
+        html += '</div>';
+        
+        // Day labels (Mon, Wed, Fri) - positioned relative to today
+        const todayDayOfWeek = today.getDay(); // 0 = Sunday, 1 = Monday, etc.
+        const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        
+        for (let day = 0; day < 7; day++) {
+          const dayIndex = (todayDayOfWeek - day + 7) % 7; // Going backward from today
+          const dayName = dayNames[dayIndex];
+          
+          // Only show Mon, Wed, Fri
+          if (dayName === 'Mon' || dayName === 'Wed' || dayName === 'Fri') {
+            html += `<div class="day-label" style="grid-row: ${day + 2};">${dayName}</div>`;
+          }
+        }
+        
+        // Calendar cells - today at top-left, going backward in time
         for (let week = 0; week < weeks; week++) {
           for (let day = 0; day < 7; day++) {
-            const currentDate = new Date(startDate);
-            currentDate.setDate(startDate.getDate() - (days - (week * 7 + day)));
+            const daysAgo = week * 7 + day;
+            const currentDate = new Date(today);
+            currentDate.setDate(today.getDate() - daysAgo);
             
             const dateKey = currentDate.toISOString().split('T')[0];
             const data = this.calendarData[dateKey];
@@ -296,7 +274,10 @@ headExtra: |
             
             // Determine intensity level (0-4)
             let level = 0;
-            if (count > 0) level = 1;
+            if (count > 0) {
+              console.log("[cal] Found a day with count > 0. ", dateKey);
+              level = 1;
+            }
             if (count >= 3) level = 2;
             if (count >= 5) level = 3;
             if (count >= 7) level = 4;

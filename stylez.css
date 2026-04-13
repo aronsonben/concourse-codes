@@ -118,8 +118,16 @@ body {
 }
 .main-content-microblog {
   padding: 10px;
-  max-width: 400px;
+  max-width: 600px;
 }
+
+@media screen and (max-width: 776px) {
+  .main-content-microblog {
+    padding: 10px;
+    max-width: 300px;
+  }
+}
+
 
 .bio-header {
   display: flex;
