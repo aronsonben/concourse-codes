@@ -39,7 +39,7 @@ headExtra: |
         <a href="/index.html" style="font-size: 0.8rem; text-decoration: none; color: #666;">&lt;- back</a>
       </div>
       <div class="center-nav-forum">
-        <p class="proverb-aesthetic">my daily commit board 📝</p>
+        <p class="proverb-aesthetic">commit board 📝</p>
         
         <!-- GitHub-style Contribution Calendar -->
         <div class="commit-calendar-container">
@@ -59,15 +59,19 @@ headExtra: |
         <!-- Note Submission Form -->
         <div class="forum-container">
           <!-- Hidden form for Netlify form detection -->
-          <form name="commit-board" netlify netlify-honeypot="bot-field" hidden>
+          <!-- <form name="commit-board" netlify netlify-honeypot="bot-field" hidden>
             <input type="text" name="note" />
-          </form>
+          </form> -->
           
           <div class="commit-form">
             <form 
               id="commitForm" 
-              name="commit-board"
+              name="commitboard"
+              action="/success.html"
+              method="POST" 
+              netlify
             >
+              <input type="hidden" name="form-name" value="commitboard" />
               <p>
                 <label>Note (max 160 characters): 
                   <textarea 
@@ -141,10 +145,10 @@ headExtra: |
           charCounter.style.color = remaining < 20 ? '#d73a49' : '#666';
         });
         
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          this.handleSubmit();
-        });
+        // form.addEventListener('submit', (e) => {
+        //   e.preventDefault();
+        //   this.handleSubmit(e);
+        // });
       }
 
       async handleSubmit() {
@@ -156,9 +160,11 @@ headExtra: |
         
         if (note && password) {
           try {
+            console.log("[cb] trying to hit endpoint now...");
+
             const response = await fetch('/.netlify/functions/submit-note', {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
+              headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ note, password })
             });
             
@@ -203,6 +209,7 @@ headExtra: |
 
       async loadNotes() {
         try {
+          // const response = await fetch('https://concourse-codes.netlify.app/.netlify/functions/get-notes');
           const response = await fetch('/.netlify/functions/get-notes');
           
           if (response.ok) {

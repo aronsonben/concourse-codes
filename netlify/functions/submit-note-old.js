@@ -24,8 +24,14 @@ exports.handler = async (event, context) => {
   }
 
   try {
+    console.log("[sub] Starting parsing submit req...");
+     
     const { note, password } = JSON.parse(event.body);
     
+    // console.log("[sub] Form Obj: ", commitForm);
+    console.log("[sub] Note Obj: ", note);
+    console.log("[sub] Pass Obj: ", password);
+
     // Validate password
     const COMMIT_PASSWORD = process.env.COMMIT_BOARD_PASSWORD;
     
@@ -82,6 +88,16 @@ exports.handler = async (event, context) => {
         note: note.trim()
       }
     };
+
+    // Copilot attempt at form object -- Netlify doesn't support JSON forms:
+    const formJsonObj = JSON.stringify({
+      form_name: 'commit-board',
+      ...formSubmission
+    });
+
+
+
+    console.log("[sub] Made it past checks, sending fetch now...");
     
     const response = await fetch(
       `https://api.netlify.com/api/v1/sites/${SITE_ID}/submissions`,
@@ -89,12 +105,9 @@ exports.handler = async (event, context) => {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${NETLIFY_API_TOKEN}`,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: JSON.stringify({
-          form_name: 'commit-board',
-          ...formSubmission
-        })
+        body: new URLSearchParams(new FormData(formSubmission)).toString()
       }
     );
     
