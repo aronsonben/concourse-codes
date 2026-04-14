@@ -90,6 +90,426 @@ permalink: projects.html
       display: none;
     }
   }
+
+  @font-face {
+    font-family: 'Chicago';
+    src: url('./assets/fonts/chicago-12-1.otf.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  /* Desktop Icon Grid Styles - Mac OS 8.5 Classic */
+  #project-desktop {
+    background: #9999C8;
+    padding: 0;
+    border: 1px solid #000;
+    min-height: 500px;
+    position: relative;
+    font-family: 'Chicago', 'Charcoal', 'Monaco', monospace;
+  }
+
+  .mac-menubar {
+    background: #DDDDDD;
+    color: black;
+    padding: 2px 8px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Charcoal', 'Chicago', 'Geneva', sans-serif;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+  }
+
+  .mac-menubar-brand {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-right: 15px;
+    cursor: pointer;
+    padding: 2px 8px;
+    border: 2px solid;
+    border-color: #fff #888 #888 #fff;
+    box-shadow: inset 1px 1px 0 #ddd, inset -1px -1px 0 #555;
+    background: #DDDDDD;
+    user-select: none;
+  }
+
+  .mac-menubar-brand:hover {
+    background: #CCCCCC;
+  }
+
+  .mac-menubar-brand:active,
+  .mac-menubar-brand.pressed {
+    border-color: #888 #fff #fff #888;
+    box-shadow: inset 1px 1px 0 #555, inset -1px -1px 0 #ddd;
+    background: #C8C8C8;
+    padding: 3px 7px 1px 9px;
+  }
+
+  .mac-menubar-brand img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  /* About ConcourseOS modal */
+  .about-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-overlay.visible {
+    display: flex;
+  }
+
+  .about-window {
+    background: #DDDDDD;
+    border: 2px solid;
+    border-color: #fff #555 #555 #fff;
+    box-shadow: 2px 2px 0 #000, inset 1px 1px 0 #eee;
+    width: 480px;
+    max-width: 95%;
+    font-family: 'Chicago', 'Geneva', sans-serif;
+    font-size: 0.8rem;
+  }
+
+  .about-titlebar {
+    background: linear-gradient(to bottom, #BBBBBB, #999999);
+    border-bottom: 1px solid #555;
+    padding: 3px 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: default;
+    user-select: none;
+  }
+
+  .about-titlebar-stripes {
+    flex: 1;
+    height: 10px;
+    background: repeating-linear-gradient(
+      to right,
+      #888 0px, #888 1px,
+      #ccc 1px, #ccc 3px
+    );
+    border: 1px solid #777;
+  }
+
+  .about-titlebar-close {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #555;
+    border-color: #fff #555 #555 #fff;
+    background: #DDDDDD;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5rem;
+    box-shadow: inset -1px -1px 0 #fff;
+  }
+
+  .about-titlebar-close:hover {
+    background: #bbb;
+  }
+
+  .about-titlebar-btn {
+    width: 12px;
+    height: 12px;
+    border: 1px solid;
+    border-color: #fff #555 #555 #fff;
+    background: #DDDDDD;
+    flex-shrink: 0;
+    box-shadow: inset -1px -1px 0 #fff;
+  }
+
+  .about-body {
+    padding: 12px;
+  }
+
+  .about-hero {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .about-banner {
+    width: 200px;
+    height: 110px;
+    object-fit: cover;
+    border: 1px solid #555;
+    flex-shrink: 0;
+  }
+
+  .about-logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .about-logo-img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border: 1px solid #aaa;
+    background: white;
+    padding: 4px;
+  }
+
+  .about-logo-name {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .about-stats {
+    border-top: 1px solid #888;
+    border-bottom: 1px solid #888;
+    padding: 6px 0;
+    margin-bottom: 10px;
+    font-size: 0.75rem;
+    line-height: 2;
+  }
+
+  .about-stats strong {
+    font-weight: bold;
+  }
+
+  .about-project-list {
+    font-size: 0.75rem;
+  }
+
+  .about-project-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 0;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .about-project-row:last-child {
+    border-bottom: none;
+  }
+
+  .about-project-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .about-project-name {
+    flex: 1;
+  }
+
+  .about-project-bar-track {
+    width: 100px;
+    height: 10px;
+    background: white;
+    border: 1px solid #888;
+    border-color: #888 #fff #fff #888;
+    overflow: hidden;
+  }
+
+  .about-project-bar {
+    height: 100%;
+    background: #333393;
+  }
+
+  .mac-menubar-item {
+    cursor: pointer;
+    padding: 2px 6px;
+  }
+
+  .mac-menubar-item:hover {
+    background: #333393;
+    color: white;
+  }
+
+  .mac-menubar-item.disabled {
+    color: #999;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .mac-menubar-item.disabled:hover {
+    background: transparent;
+    color: #999;
+  }
+
+  .mac-menubar-right {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .desktop-content {
+    padding: 30px;
+    min-height: 450px;
+  }
+
+  .desktop-row {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+  }
+
+  .desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    width: 90px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .desktop-icon:active .icon-label {
+    background: #000;
+    color: white;
+  }
+
+  .icon-wrapper {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    margin-bottom: 4px;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    position: relative;
+  }
+
+  .desktop-icon-img {
+    max-width: 64px;
+    max-height: 64px;
+    object-fit: contain;
+    filter: contrast(1.15) saturate(1.3);
+  }
+
+  .emoji-icon {
+    background: #E0E0E0;
+    border: 2px solid;
+    border-color: #fff #666 #666 #fff;
+  }
+
+  .desktop-emoji {
+    font-size: 42px;
+  }
+
+  .text-icon {
+    background: #E0E0E0;
+    border: 2px solid;
+    border-color: #fff #666 #666 #fff;
+  }
+
+  .desktop-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #000;
+    font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
+  }
+
+  .icon-label {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #000;
+    font-weight: normal;
+    font-family: 'Chicago', 'Geneva', 'Charcoal', sans-serif;
+    word-wrap: break-word;
+    max-width: 90px;
+    line-height: 1.3;
+    padding: 2px 4px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+  }
+
+  .external-link-indicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border: 1px solid #000;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .external-link-indicator svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .mac-menubar {
+      font-size: 0.75rem;
+      gap: 10px;
+      padding: 2px 4px;
+    }
+
+    .desktop-content {
+      padding: 20px;
+    }
+    
+    .desktop-row {
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .desktop-icon {
+      width: 70px;
+    }
+    
+    .icon-wrapper {
+      width: 48px;
+      height: 48px;
+    }
+    
+    .desktop-icon-img {
+      max-width: 48px;
+      max-height: 48px;
+    }
+    
+    .desktop-emoji {
+      font-size: 32px;
+    }
+    
+    .desktop-text {
+      font-size: 24px;
+    }
+
+    .external-link-indicator {
+      width: 12px;
+      height: 12px;
+    }
+
+    .external-link-indicator svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
 </style>
 <div style="margin: 10px;">
   <h2>Projects</h2>
@@ -215,88 +635,182 @@ permalink: projects.html
       </td>
     </tr>
   </table>
-  
-  
-  <!-- <table id="project-table-og">
-    <tr class="projectRow">
-      <td class="iconCol">
-        <a href="https://colors.concourse.codes/" target="_blank" class="proj-table-link">
-          <img src="./assets/img/swatch.png" alt="site-logo" class="concourse-icon" />
+  <br />
+  <hr />
+  <br />
+  <div id="project-desktop" style="margin: 10px;">
+    <div class="mac-menubar">
+      <div class="mac-menubar-brand" id="about-btn" onclick="toggleAbout()">
+        <img src="./assets/img/monstera.png" alt="ConcourseOS" />
+        <span>ConcourseOS</span>
+      </div>
+      <span class="mac-menubar-item disabled">File</span>
+    </div>
+    <div class="about-overlay" id="about-overlay" onclick="closeAboutOnOverlay(event)">
+      <div class="about-window">
+        <div class="about-titlebar">
+          <div class="about-titlebar-close" onclick="closeAbout()"></div>
+          <div class="about-titlebar-btn"></div>
+          <div class="about-titlebar-stripes"></div>
+          <span>About ConcourseOS</span>
+          <div class="about-titlebar-stripes"></div>
+        </div>
+        <div class="about-body">
+          <div class="about-hero">
+            <img src="./assets/img/planecloud.png" alt="concourse.codes" class="about-banner" />
+            <div class="about-logo-area">
+              <img src="./assets/img/monstera.png" alt="ConcourseOS" class="about-logo-img" />
+              <span class="about-logo-name">ConcourseOS 1.0</span>
+            </div>
+          </div>
+          <div class="about-stats">
+            <div><strong>Built by:</strong>&nbsp;&nbsp;Ben Aronson</div>
+            <div><strong>Projects Live:</strong>&nbsp;&nbsp;7</div>
+            <div><strong>Projects Retired:</strong>&nbsp;&nbsp;1</div>
+            <div><strong>™ &amp; © concourse.codes, 2024–2026</strong></div>
+          </div>
+          <div class="about-project-list">
+            <div class="about-project-row">
+              <img src="./assets/img/swatch.png" class="about-project-icon" alt="" />
+              <span class="about-project-name">Synthesia</span>
+              <div class="about-project-bar-track"><div class="about-project-bar" style="width:90%"></div></div>
+            </div>
+            <div class="about-project-row">
+              <img src="./assets/img/proj/newsdash.jpg" class="about-project-icon" alt="" />
+              <span class="about-project-name">NewsDash</span>
+              <div class="about-project-bar-track"><div class="about-project-bar" style="width:75%"></div></div>
+            </div>
+            <div class="about-project-row">
+              <span class="about-project-icon" style="text-align:center">🧠</span>
+              <span class="about-project-name">braindump</span>
+              <div class="about-project-bar-track"><div class="about-project-bar" style="width:60%"></div></div>
+            </div>
+            <div class="about-project-row">
+              <img src="./assets/img/arenaicon.png" class="about-project-icon" alt="" />
+              <span class="about-project-name">Arena Fine Tuner</span>
+              <div class="about-project-bar-track"><div class="about-project-bar" style="width:45%"></div></div>
+            </div>
+            <div class="about-project-row">
+              <img src="./assets/img/proj/townflag.jpeg" class="about-project-icon" alt="" />
+              <span class="about-project-name">MA Town Flag Gen.</span>
+              <div class="about-project-bar-track"><div class="about-project-bar" style="width:55%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="desktop-content">
+      <div class="desktop-row">
+        <a href="https://colors.concourse.codes" target="_blank" rel="noopener noreferrer" class="desktop-icon">
+          <div class="icon-wrapper">
+            <img src="./assets/img/swatch.png" alt="Synthesia" class="desktop-icon-img" />
+            <div class="external-link-indicator">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 3L13 8M13 3H8M13 3L7 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="icon-label">Synthesia</div>
         </a>
-      </td>
-      <td class="infoCol">
-        <a href="https://colors.concourse.codes/" target="_blank" class="proj-table-link">
-          <h3>Synthesia</h3>
+        <a href="https://news.concourse.codes" target="_blank" rel="noopener noreferrer" class="desktop-icon">
+          <div class="icon-wrapper">
+            <img src="./assets/img/proj/newsdash.jpg" alt="NewsDash" class="desktop-icon-img" />
+            <div class="external-link-indicator">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 3L13 8M13 3H8M13 3L7 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="icon-label">NewsDash</div>
         </a>
-        <p style="font-size: 0.8rem;"><i>Crowdsourced color palettes for your music.</i></p>
-      </td>
-      <td class="statusCol">
-        <a href="https://colors.concourse.codes/" target="_blank" class="proj-table-link">
-          🌐 Live!
+        <a href="https://brain.concourse.codes" target="_blank" rel="noopener noreferrer" class="desktop-icon">
+          <div class="icon-wrapper emoji-icon">
+            <span class="desktop-emoji">🧠</span>
+            <div class="external-link-indicator">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 3L13 8M13 3H8M13 3L7 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="icon-label">braindump</div>
         </a>
-      </td>
-    </tr>
-    <tr class="projectRow">
-      <td class="iconCol">
-        <a href="https://newsdash.vercel.app/" target="_blank" class="proj-table-link">
-          <img src="./assets/img/planecloud.png" alt="plane-cloud-newsdash" class="concourse-icon" />
+      </div>
+      <div class="desktop-row">
+        <a href="https://arena.concourse.codes" target="_blank" rel="noopener noreferrer" class="desktop-icon">
+          <div class="icon-wrapper">
+            <img src="./assets/img/arenaicon.png" alt="Arena Fine Tuner" class="desktop-icon-img" />
+            <div class="external-link-indicator">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 3L13 8M13 3H8M13 3L7 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="icon-label">Arena Fine Tuner</div>
         </a>
-      </td>
-      <td class="infoCol">
-        <a href="https://newsdash.vercel.app/" target="_blank" class="proj-table-link">
-          <h3>newsdash</h3>
+      </div>
+      <div class="desktop-row">
+        <a href="https://massachusetts-town-flag-generator-640157164110.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="desktop-icon">
+          <div class="icon-wrapper">
+            <img src="./assets/img/proj/townflag.jpeg" alt="MA Town Flag Generator" class="desktop-icon-img" />
+            <div class="external-link-indicator">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 3L13 8M13 3H8M13 3L7 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="icon-label">MA Town Flag Generator</div>
         </a>
-        <p style="font-size: 0.8rem;"><i>LLM-powered search summaries for my passionate topics</i></p>
-      </td>
-      <td class="statusCol">
-        <a href="https://newsdash.vercel.app/" target="_blank" class="proj-table-link">
-          Active
+        <a href="https://rej.concourse.codes" target="_blank" rel="noopener noreferrer" class="desktop-icon">
+          <div class="icon-wrapper">
+            <img src="./assets/img/proj/masssave.jpg" alt="MassSave" class="desktop-icon-img" />
+            <div class="external-link-indicator">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 3L13 8M13 3H8M13 3L7 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="icon-label">MassSave</div>
         </a>
-      </td>
-    </tr>
-    <tr class="projectRow">
-      <td class="iconCol">
-        <a href="https://brain.concourse.codes/" target="_blank" class="proj-table-link">
-          <span class="concourse-icon" style="font-size: 1.5rem; line-height: 1; text-decoration: none !important;">🧠</span>
+        <a href="https://concourse-qr-180066961304.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="desktop-icon">
+          <div class="icon-wrapper text-icon">
+            <span class="desktop-text">C</span>
+            <div class="external-link-indicator">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 3L13 8M13 3H8M13 3L7 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="icon-label">ConcourseQR</div>
         </a>
-      </td>
-      <td class="infoCol">
-        <a href="https://brain.concourse.codes/" target="_blank" class="proj-table-link">
-          <h3>braindump</h3>
+      </div>
+      <div class="desktop-row">
+        <a href="project/revenuespot.html" target="_blank" rel="noopener noreferrer" class="desktop-icon">
+          <div class="icon-wrapper text-icon">
+            <span class="desktop-text">RS</span>
+            <div class="external-link-indicator">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 3L13 8M13 3H8M13 3L7 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="icon-label">RevenueSpot</div>
         </a>
-        <p style="font-size: 0.8rem;"><i>Keep track of the things that are actually important</i></p>
-      </td>
-      <td class="statusCol">
-        <a href="https://brain.concourse.codes/" target="_blank" class="proj-table-link">
-          Paused
-        </a>
-      </td>
-    </tr>
-    <tr class="projectRow">
-      <td class="iconCol">
-        <a href="/projects/revenuespot.html" target="_blank" class="proj-table-link">
-          <img src="./assets/img/spotify.png" alt="site-logo" class="concourse-icon" />
-        </a>
-      </td>
-      <td class="infoCol">
-        <a href="/projects/revenuespot.html" target="_blank" class="proj-table-link">
-          <h3>Revenue Spot</h3>
-        </a>
-        <p style="font-size: 0.8rem;"><i>How much money did that song actually make?</i></p>
-      </td>
-      <td class="statusCol">
-        <a href="/projects/revenuespot.html" target="_blank" class="proj-table-link">
-          Retired
-        </a>
-      </td>
-    </tr>
-  </table>
-  <div style="margin-top: 5rem;">
-    <h3>Past Brain Blasts:</h3>
-    <p style="font-size: 0.75rem"><i>Ideas from the past that never got finished</i></p>
-    <ul>
-      <li><b>DiscoCat</b> - be your own A&R</li>
-      <li><b>Yelp Audience Builder</b> - discover global cuisines around you</li>
-    </ul>
+      </div>
+    </div>
   </div>
-</div> -->
+</div>
+<script>
+  function toggleAbout() {
+    const overlay = document.getElementById('about-overlay');
+    const btn = document.getElementById('about-btn');
+    overlay.classList.toggle('visible');
+    btn.classList.toggle('pressed');
+    setTimeout(() => btn.classList.remove('pressed'), 150);
+  }
+  function closeAbout() {
+    document.getElementById('about-overlay').classList.remove('visible');
+  }
+  function closeAboutOnOverlay(e) {
+    if (e.target === document.getElementById('about-overlay')) closeAbout();
+  }
+</script>
