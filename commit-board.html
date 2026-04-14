@@ -67,7 +67,7 @@ headExtra: |
             <form 
               id="commitForm" 
               name="commitboard"
-              action="/success.html"
+              action="/commit-board.html"
               method="POST" 
               netlify
             >
@@ -180,8 +180,6 @@ headExtra: |
           
           this.calendarData[dateKey].count++;
           this.calendarData[dateKey].notes.push(note);
-
-          console.log("[cal] datekey: ", this.calendarData[dateKey]);
         });
       }
 
@@ -275,7 +273,7 @@ headExtra: |
             // Determine intensity level (0-4)
             let level = 0;
             if (count > 0) {
-              console.log("[cal] Found a day with count > 0. ", dateKey);
+              // console.log("[cal] Found a day with count > 0. ", dateKey);
               level = 1;
             }
             if (count >= 3) level = 2;
