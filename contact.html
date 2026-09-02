@@ -3,15 +3,64 @@ layout: layouts/base.njk
 title: Contact
 permalink: contact.html
 ---
+<style>
+  #emailspan {
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(0, 56, 0);
+  }
+  #copyicon {
+    appearance: none;
+    -webkit-appearance: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  #copyicon svg {
+    display: block;
+    fill: currentColor;
+  }
+  #copiedtext {
+    font-size: 0.7em;
+    color: rgb(0, 100, 0);
+    margin-left: 4px;
+    display: none;
+  }
+</style>
 
 <div style="margin: 10px;">
   <h2>Contact</h2>
   <p>A few ways to get in touch.</p>
   <br />
   <div>
-    <p><a href="mailto:borice.brainblasts@gmail.com" type="email">Email</a></p>
+    <p>
+      <a href="mailto:ben@concourse.codes" type="email">Email</a> - 
+      <span id="emailspan">ben@concourse.codes</span> 
+      <button id="copyicon" type="button" aria-label="Copy email address" title="Copy email address">
+        <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H8V7h11v14Z" />
+        </svg>
+      </button>
+      <span id="copiedtext">Copied!</span>
+    </p>
     <p><a href="https://github.com/aronsonben">GitHub</a></p>
     <p><a href="https://www.linkedin.com/in/benjamin-aronson/" type="email">LinkedIn</a></p>
     <p><a href="https://bsky.app/profile/concourse-codes.bsky.social">BlueSky</a></p>
   </div>
 </div>
+
+<script>
+  document.getElementById('copyicon').addEventListener('click', async () => {
+    const email = document.getElementById('emailspan').textContent.trim();
+    await navigator.clipboard.writeText(email);
+    document.getElementById('copiedtext').style.display = 'inline';
+  });
+</script>
