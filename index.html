@@ -4,108 +4,211 @@ title: Concourse Codes
 permalink: index.html
 ---
 
-<div class="portfolio-header">
-  <div class="icon-header">
-    <img src="/assets/img/dracaena.png" alt="site-logo" class="concourse-icon-lg" style="max-width: 110px; max-height: 110px" />
-    <img src="/assets/img/ben_pixel.png" alt="ben-head-pixel" class="concourse-icon-xl" />
-    <img src="/assets/img/monstera.png" alt="site-logo" class="concourse-icon-lg" />
+<style>
+  .hdr-home {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: flex-start;
+    gap: 20px;
+    /* margin: 0 10px 40px 10px; */
+  }
+  .hdr-home p {
+    font-size: 15px;
+  }
+  .hdr-banner {
+    width: 100%;
+    height: 130px;
+  }
+  .hdr-banner img {
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    object-fit: fill;
+  }
+  .hdr-text {
+    display: flex;
+    flex-direction: column;;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 0 15px;
+  }
+  #hdr-inline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .hdr-intro {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .hdr-links {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  .hdr-links a {
+    border-radius: 4px;
+    border: solid 1px black;
+    transition: all 0.3s ease;
+    padding: 4px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+  }
+  .hdr-links a:hover {
+    box-shadow: 0 4px 12px rgba(37, 48, 49, 0.1);
+    transform: translateY(-2px);
+  }
+  .text-climate {
+    font-weight: bold;
+    color: darkgreen;
+  }
+  .text-code {
+    font-weight: bold;
+    color: darkblue;
+  }
+  .text-culture {
+    font-weight: bold;
+    color: #2b6fe1;
+  }
+  .hdr-link-climate {
+    color: darkgreen;
+  }
+  .hdr-link-code {
+    color: darkblue;
+  }
+  .hdr-link-culture {
+    color: #2b6fe1;
+  }
+  .other-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+  @media (max-width: 800px) {
+    .hdr-intro {
+      flex-wrap: wrap;
+    }
+    .hdr-links {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    .hdr-links a {
+      letter-spacing: normal;
+      padding: 2px 8px;
+      min-width: 125px;
+    }
+    .other-link img {
+      max-width: 25px;
+      max-height: 25px;
+      width: 25px;
+      height: 25px;
+    }
+  }
+</style>
+<div class="hdr-home">
+  <div class="hdr-banner">
+    <img src="./assets/img/concourse01.jpeg" alt="header-banner" />
   </div>
-  <div class="portfolio-intro">
-    <h2>Hey! I'm Ben.</h2>
-    <p>Welcome to <b>Concourse Codes</b>, my digital home and creative portfolio.</p>
-    <p>I'm a developer and artist interested in the confluence of code, climate, and culture. Explore my site to learn more.</p>
+  <div class="hdr-text">
+    <span id="hdr-inline">
+      <img src="/assets/img/paradise.png" alt="home" class="concourse-icon" />
+      <h1 style="color: rgb(63, 35, 11);">Concourse Codes</h1>
+    </span>
+    <div class="hdr-intro">
+      <p>Welcome to <b>Concourse Codes</b>, the digital home of artist and software dev</p>
+      <span class="inline-img-text" style="gap: 0;">
+        <img src="./assets/img/ben_pixel.png" alt="ben" class="concourse-icon"/>
+        <a href="about.html" target>Ben Aronson</a>.
+      </span>
+    </div>
+    <p>This site is a collection of interests meeting at the concourse of <span class="text-climate">climate</span>, <span class="text-code">code</span> & <span class="text-culture">culture</span>. Feel free to explore the site to see what I'm working on.</p>
+    <nav class="hdr-links">
+      <a href="/projects.html"><img src="/assets/img/dracaena.png" alt="" class="concourse-icon" />Projects</a>
+      <a href="/climate.html" class="hdr-link-climate"><img src="/assets/img/mass.png" alt="" class="concourse-icon" />Climate</a>
+      <a href="/code.html" class="hdr-link-code"><img src="/assets/img/planecloud.png" alt="" class="concourse-icon" />Code</a>
+      <a href="/culture.html" class="hdr-link-culture"><img src="/assets/img/turbine.jpeg" alt="" class="concourse-icon" />Culture</a>
+    </nav>
   </div>
 </div>
 
-<section class="sitemap">
-  <div class="sitemap-row">
-    <a href="/projects.html" class="sitemap-item">
-      <img src="/assets/img/dracaena.png" alt="" class="sitemap-icon" />
-      <p>Projects</p>
+<section class="project-highlight" style="margin: 10px; padding: 0 15px;">
+  <h2>What I've Been Up To Of Late</h2>
+  <p>A sampling of some of the things I've been working on in the past while.</p>
+</section>
+
+<section id="updates" style="padding: 0 15px;">
+  <div class="update-grid">
+    <a href="https://cybersolar.earth" class="update-item">
+      <div class="update-item-header">
+        <img src="/assets/img/turbine.jpeg" alt="CyberSolar / Grass is Greener" class="update-icon" />
+        <div class="update-item-text">
+          <h3>CyberSolar;; Grass is Greener</h3>
+          <p class="update-description">Multi-disciplinary solarpunk music & tech project</p>
+        </div>
+      </div>
+      <span class="view-more-link">View More →</span>
     </a>
-    <a href="/blog.html" class="sitemap-item">
-      <img src="/assets/img/monstera.png" alt="" class="sitemap-icon" />
-      <p>Blog</p>
+
+    <a href="https://news.concourse.codes" class="update-item">
+      <div class="update-item-header">
+        <img src="/assets/img/proj/newsdash.jpg" alt="NewsDash" class="update-icon" />
+        <div class="update-item-text">
+          <h3>NewsDash</h3>
+          <p class="update-description">Using LLMs to build weekly dashboards of the latest climate news</p>
+        </div>
+      </div>
+      <span class="view-more-link">View More →</span>
     </a>
-    <a href="/about.html" class="sitemap-item">
-      <img src="/assets/img/paradise.png" alt="" class="sitemap-icon" />
-      <p>About</p>
+
+    <a href="https://rej.concourse.codes" class="update-item">
+      <div class="update-item-header">
+        <img src="/assets/img/mass.png" alt="Stop Energy Scams Initiative" class="update-icon" />
+        <div class="update-item-text">
+          <h3>Stop Energy Scams Initiative</h3>
+          <p class="update-description">Advocacy work to protect utility customers from predatory energy scams.</p>
+        </div>
+      </div>
+      <span class="view-more-link">View More →</span>
     </a>
-    <!-- Don't show this until I have some stuff populated on there (BA, 4/13/26) -->
-    <!-- <a href="/commit-board.html" class="sitemap-item">
-      <img src="/assets/img/paradise.png" alt="" class="sitemap-icon" />
-      <p>Commit Board</p>
-    </a> -->
+
+    <a href="https://arena.concourse.codes" class="update-item">
+      <div class="update-item-header">
+        <img src="/assets/img/arenaicon.png" alt="Are.na Style Synthesizer" class="update-icon" />
+        <div class="update-item-text">
+          <h3>Are.na Style Synthesizer</h3>
+          <p class="update-description">Fine tune LLM image gens on Are.na channels.</p>
+        </div>
+      </div>
+      <span class="view-more-link">View More →</span>
+    </a>
+
+    <a href="./projects.html">View all projects →</a>
   </div>
 </section>
 
-<section class="project-highlight" style="margin: 10px;">
-  <h1>Project Highlights</h1>
-</section>
-
-<section class="portfolio-grid">
-  <div class="portfolio-item">
-    <div class="portfolio-item-header">
-      <img src="/assets/img/swatch.png" alt="Creative Work" class="portfolio-icon" />
-      <h3>Synthesia</h3>
-    </div>
-    <p>Crowdsourced color palettes for music - an exploration in experience design</p>
-    <ul class="tech-tags">
-      <li>React.js</li>
-      <li>Node.js</li>
-      <li>TailwindCSS</li>
-      <li>Supabase</li>
-    </ul>
-    <a href="https://colors.concourse.codes" class="project-link">View Project →</a>
-  </div>
-
-  <div class="portfolio-item">
-    <div class="portfolio-item-header">
-      <img src="/assets/img/proj/newsdash.jpg" alt="NewsDash project" class="portfolio-icon" />
-      <h3>NewsDash</h3>
-    </div>
-    <p>An exploration in using web-search grounded LLMs to help me stay up to date on local issues.</p>
-    <ul class="tech-tags">
-      <li>React</li>
-      <li>Node.js</li>
-      <li>Gemini API</li>
-    </ul>
-    <a href="https://newsdash.concourse.codes" class="project-link">View Project →</a>
-  </div>
-
-  <div class="portfolio-item">
-    <div class="portfolio-item-header">
-      <img src="/assets/img/arenaicon.png" alt="Creative Work" class="portfolio-icon" />
-      <h3>Are.na Style Synthesizer</h3>
-    </div>
-    <p>Fine tune LLM image gens on Are.na channels</p>
-    <ul class="tech-tags">
-      <li>React.js</li>
-      <li>TypeScript</li>
-      <li>Gemini API</li>
-      <li>Google Cloud</li>
-    </ul>
-    <a href="https://arena.concourse.codes" class="project-link">View Project →</a>
-  </div>
-
-  <div class="portfolio-item">
-    <div class="portfolio-item-header">
-      <img src="/assets/img/mass.png" alt="Creative Work" class="portfolio-icon" />
-      <h3>MassSave + REJ Analysis</h3>
-    </div>
-    <p>Data dive into whether MassSave is environmentally just</p>
-    <ul class="tech-tags">
-      <li>React.js</li>
-      <li>Python</li>
-      <li>Data Analysis</li>
-      <li>Data Pipeline</li>
-    </ul>
-    <a href="https://rej.concourse.codes" class="project-link">View Project →</a>
-  </div>
-</section>
-
-<section class="post-portfolio-grid">
-  <a href="/projects.html" class="cta-button">View Projects</a>
+<section id="other-links" style="padding: 0 15px;">
+  <h2>Other site links</h2>
+  <ul style="list-style-type: none; margin: 0; padding: 0;">
+    <li><a href="/blog.html" class="other-link"><img src="/assets/img/monstera.png" alt="blog" class="concourse-icon-xs" />Blog</a></li>
+    <li><a href="/microblog.html" class="other-link"><img src="/assets/img/swatch.png" alt="microblog-icon" class="concourse-icon-xs" />Micro-blog</a></li>
+    <li><a href="/about.html" class="other-link"><img src="/assets/img/ben_pixel.png" alt="ben-head-pixel" class="concourse-icon-xs" />About</a></li>
+    <li><a href="/contact.html" class="other-link"><img src="/assets/img/mailbush.png" alt="contact" class="concourse-icon-xs" />Contact</a></li>
+  </ul>
 </section>
 
 <section class="portfolio-cta">

@@ -240,7 +240,7 @@ footer {
   align-items: center;
   text-align: center;
   gap: 20px;
-  margin: 0 10px 40px 10px;
+  /* margin: 0 10px 40px 10px; */
 }
 
 .portfolio-intro {
@@ -333,6 +333,99 @@ footer {
 
 .project-link:hover {
   opacity: 0.7;
+}
+
+.update-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 15px 10px 50px 10px;
+}
+
+.update-item {
+  border: 1px solid #253031;
+  border-radius: 4px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.update-item:hover {
+  box-shadow: 0 4px 12px rgba(37, 48, 49, 0.1);
+  transform: translateY(-2px);
+}
+
+.update-item:nth-child(4n + 1):hover {
+  background-color: #a8d8ea; /* sky blue */
+}
+
+.update-item:nth-child(4n + 2):hover {
+  background-color: #cba980; /* light brown */
+}
+
+.update-item:nth-child(4n + 3):hover {
+  background-color: #d9c2d3; /* mauve */
+}
+
+.update-item:nth-child(4n + 4):hover {
+  background-color: #b7c4a9; /* sage */
+}
+
+.update-item-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.update-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.update-description {
+  margin: 0;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #6B5B47;
+}
+
+.update-icon {
+  max-width: 32px;
+  max-height: 32px;
+  flex-shrink: 0;
+}
+
+.update-item h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.view-more-link {
+  color: #253031;
+  text-decoration: none;
+  font-weight: normal;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.view-more-link:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 540px) {
+  .update-item-text {
+    justify-content: flex-start;
+  }
+  .update-description {
+    text-align: inherit;
+  }
 }
 
 .portfolio-cta {
