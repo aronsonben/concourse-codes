@@ -26,6 +26,17 @@ permalink: climatehackers.html
   <link rel="stylesheet" href="/stylez.css" />
 
   <style>
+    @font-face {
+      font-family: 'rockwellmt';
+      src: url('/assets/fonts/rockwellmt.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'rockwellmt', serif;
+    }
+
     .ch-page {
       width: 100%;
       display: flex;
@@ -66,17 +77,18 @@ permalink: climatehackers.html
       gap: 10px;
     }
 
-    .ch-hero img {
-      max-width: 70px;
-      max-height: 70px;
+    .ch-hero #ch-logo {
+      max-width: 90px;
+      max-height: 90px;
+    }
+    
+    .ch-hero #ch-logo-text {
+      max-width: 360px;
+      max-height: 360px;
     }
 
     .ch-hero h1 {
       font-size: 1.8rem;
-    }
-
-    .ch-hero p {
-      max-width: 520px;
     }
 
     .ch-section {
@@ -88,8 +100,14 @@ permalink: climatehackers.html
     }
 
     .ch-section h2 {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      letter-spacing: 0.3rem;  /* only good for RockewellMT font */
+      color: #1e3e19;
+    }
+
+    .ch-section p {
+      margin-bottom: 10px;
     }
 
     .ch-section ul {
@@ -132,16 +150,17 @@ permalink: climatehackers.html
     </div>
 
     <header class="ch-hero">
-      <img src="/assets/img/mass.png" alt="" />
-      <h1>Climate Hackers</h1>
-      <p>A monthly meetup for anyone wanting to build towards a greener future.</p>
+      <img src="/assets/img/clihax/clihax_logo.png" alt="Climate Hackers Temp Logo v1" id="ch-logo" />
+      <img src="/assets/img/clihax/clihax_txt.png" alt="Climate Hackers" id="ch-logo-text" />
+      <!-- <h1>Climate Hackers</h1> -->
+      <p>A monthly hackathon for building and collaborating on climate-oriented projects.</p>
     </header>
 
     <section class="ch-section">
       <h2>Overview</h2>
-      <p>Climate Hackers is a Boston-based event series for anyone who is climate-curious, 
+      <p>Climate Hackers is a Boston-based hackathon series for anyone who is climate-curious, 
         wants to build practical solutions for a greener future, 
-        or is looking for community and collaboration in the city.
+        or is looking for community and collaboration amongst fellow climate-conscious individuals.
       </p>
     </section>
 
@@ -157,8 +176,8 @@ permalink: climatehackers.html
 
     <section class="ch-section">
       <h2>Who is this for?</h2>
-      <p>The event is open for anyone with an interest and motivation to collaborate to build climate solutions.</p>
-      <p>Whether you are a professional working in the climate space, a student, a tech worker, or someone who simply cares about the environment and has skills and ideas to offer, you are welcome.</p>
+      <p>The event is open for <b>anyone with an interest and motivation to collaborate to build climate solutions.</b></p>
+      <p>Whether you are a professional, student, retiree, or someone who simply cares about the environment and has skills and ideas to offer, you are welcome. No climate or tech experience required.</p>
       <ul>
         <li>You do not have to know how to code or work in tech to attend</li>
         <li>No prior experience necessary</li>
@@ -168,17 +187,12 @@ permalink: climatehackers.html
 
     <section class="ch-section">
       <h2>Guiding Principles</h2>
-      <ul>
+      <p>We aim to strive for a set of guiding principles to ground our work in intentionality, community, and collaboration.</p>
+      <ol>
         <li>Focus on building long-term, cross-disciplinary projects and collaborations</li>
-        <li>Focus on local, grassroots communities and solutions</li>
+        <li>Focus on local, grassroots communities and solutions (where possible)</li>
         <li>Create space for climate-conscious and climate-curious individuals in the Boston-area to come together in collaboration</li>
-      </ul>
-    </section>
-
-    <section class="ch-section">
-      <h2>How to Prepare?</h2>
-      <p>No prior experience in hackathons, tech, or climate work is required.
-        Participants should plan to bring a device (e.g. laptop, tablet) to work on and any other additional tools needed to do the work.</p>
+      </ol>
     </section>
 
     <section class="ch-section">
@@ -207,43 +221,51 @@ permalink: climatehackers.html
       <h2>FAQs</h2>
       <ul>
         <li><b>Are there judges & winners?</b> For this hackathon, there are no judges or winners. The goal is to collectively build a set of tools to support local climate initiatives.</li>
-        <li><b>How long will it be?</b> Roughly 4hrs, though details are TBD</li>
-        <li><b>Will there be a prize?</b> The prize is the friendship made along the way :)</li>
+        <li><b>How long will it be?</b> Roughly 4hrs. Details to be confirmed.</li>
+        <li><b>Will there be a prize?</b> As of now, there is no physical prize. <em>The prize is the friendship made along the way :)</em></li>
+        <li><b>How do I prepare?</b> Come prepared with ideas, an open mind, and a collaborative spirit. No other experience required.</li>
+        <li><b>What kind of skills are required?</b> Any domain expertise is accepted. Whether you're an engineer, designer, founder, writer, gardener, or student - as long as you have ideas to offer and a desire to help you are welcome.</li>
+        <li><b>What kinds of projects will be worked on?</b> Per the nature of a hackathon, most projects may be software oriented. There is no limitation, however, and we will expand on this in the future.</li>
+      </ul>
+    </section>
+
+    <section class="ch-section">
+      <h2>Join the Climate Hackers community</h2>
+      <p>Interested? Use any of the links below to get involved and stay up to date on our latest events, news & projects.</p>
+      <ul>
+        <li><b><a href="https://docs.google.com/forms/d/e/1FAIpQLSchK7dz_mpMz164FCUqcEAFN-yjxvFlZXvQdPcG1nezFEEWgw/viewform?usp=publish-editor" target="_blank">Join the email list</a></b></li>
+        <li><b>Follow us on social media:</b> Coming soon...</li>
+        <li><b>Follow our Luma calendar:</b> Coming soon...</li>
+        <li><b>Join the Discord server:</b> Coming soon...</li>
+        <li><b>Want to get in touch? Have ideas? Interested in volunteering?</b> <a href="https://docs.google.com/forms/d/e/1FAIpQLSchK7dz_mpMz164FCUqcEAFN-yjxvFlZXvQdPcG1nezFEEWgw/viewform?usp=publish-editor" target="_blank">Click here to let us know</a></li>
+        <li><b>Questions?</b> <a href="mailto:ben@concourse.codes" target="_blank" type="mailto">Get in touch via email</a></li>
       </ul>
     </section>
 
     <section class="ch-section">
       <h2>Community Links</h2>
-      <p>More links to come...</p>
-    </section>
-
-    <section class="ch-section">
-      <h2>Join the Climate Hackers community</h2>
-      <p>More links to come...</p>
-    </section>
-
-    <section class="ch-section">
-      <h2>Contact</h2>
-      <p>More links to come...</p>
+      <p>Here we will share links to ongoing projects being developed as part of the Climate Hackers series.</p>
+      <p><em>More links to come...</em></p>
     </section>
 
      <section class="ch-section">
       <h2>AI Policy</h2>
       <p>
-        We can all agree that the rapid deployment of artificial intelligence and the 
-        resources needed to power this infrastrucutre stands to have potential negative 
-        effects on our environment.
+        Any concerned citizen can agree that the rapid deployment of artificial intelligence and the 
+        resources needed to power this infrastrucutre stands to have some negative consequences on our environment.
       </p>
       <p>
-        Despite this, Climate Hackers policy is that of technical pragmatism. AI, like many
-        revolutionary technologies before it, is here to stay. What we can do, however, is 
-        use it for good to support projects, organizations & fields that may otherwise may 
-        blocked by lack of resources. 
+        Despite this, Climate Hackers policy is that of <em>technical pragmatism.</em> AI, like many
+        revolutionary technologies before it, is an unstoppable force. <br/>
+        What we can do, however, is use it for good to support projects, organizations & causes that may otherwise may 
+        be blocked by lack of resources. 
       </p>
       <p>
         That said, <em>"AI slop" is not allowed.</em> Our definition of this is something like a 
-        haphazardly vibecoded web app for an issue without much research behind it. 
-        (More to come)...
+        lazily vibecoded web app for some perceived issue without much research behind it. 
+      </p>
+      <p style="font-size: 14px; font-style: italic;">
+        This is an evolving field and the policy stands to be updated. 
       </p>
     </section>
 

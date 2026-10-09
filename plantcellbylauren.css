@@ -1,0 +1,219 @@
+/*
+ * Name: Plant Cell
+ * Author: loren
+ * Website: https://ribo.zone
+*/
+
+ @font-face {
+     font-family: "Heal";
+     src: url("https://ribo.zone/32bitcafe/HealTheWebA-Regular.otf") format("opentype");
+}
+ * {
+     font-family: 'Courier';
+     box-sizing: border-box;
+     scrollbar-width: thin;
+}
+ body {
+     background: url(https://ribo.zone/32bitcafe/plantcellbg.jpg), rgb(193, 196, 128);
+     color: rgb(87,93,49);
+     overflow-y: scroll;
+}
+ h1 {
+     margin: 0;
+     padding: 0;
+}
+ h1 a {
+     font-family: 'Heal', 'arial';
+     font-size: 80px;
+     color: rgb(87,93,49);
+     padding: 0 !important;
+     text-decoration: none;
+     text-shadow: 5px 5px white;
+}
+ h1 a:hover {
+     color: #757a42;
+}
+ h2, h3 {
+     font-family: 'heal', 'arial';
+}
+ a {
+     font-family: 'heal', 'arial';
+     color: #757a42;
+     text-decoration: underline;
+}
+ a:hover {
+     text-decoration-style: wavy;
+     color: rgb(87,93,49);
+}
+ h2, h3, h4, h5, p {
+     margin: 10px;
+}
+ pre {
+     background: rgb(87,93,49);
+     color: white;
+     padding: 15px;
+     overflow: auto;
+     margin: 10px;
+}
+ code {
+     background: rgb(87,93,49);
+     color: white;
+     padding: 0 4px;
+     line-height: 1.2;
+}
+ section {
+     margin: 10px;
+     padding: 10px;
+     border: 2px dotted rgb(193, 196, 128);
+}
+ .header {
+     padding: 0px;
+     text-align: left;
+     width: 100%;
+     height: auto;
+     margin: 10px 10px 0 10px;
+}
+nav {
+     border: 5px double;
+     padding: 10px;
+     background-color: white;
+     border-radius: 5px;
+     margin: 10px;
+}
+nav a {
+     color: #757a42;
+     line-height: 0.8;
+     margin: 0;
+     border:none;
+     text-decoration:none;
+     background: none;
+}
+nav ul li a:hover {
+     text-shadow: 2px 2px rgb(193, 196, 128);
+     color: rgb(87,93,49);
+     background: none;
+}
+main {
+     margin: 10px;
+     background-color: white;
+     border: 5px double;
+     border-radius: 5px;
+     width: 50rem !important;
+}
+nav ul {
+     list-style-type: none;
+     margin: 10px;
+     padding: 5px;
+}
+nav li {
+     display: block;
+     padding: 2px;
+}
+footer {
+     text-align: center;
+     padding: 10px 15px;
+     width: fit-content;
+     margin: 10px auto;
+     background-color: white;
+     border: 5px double;
+     border-radius: 5px;
+}
+ @media screen and (max-width: 700px) {
+     .container {
+         padding: 0 !important;
+    }
+     .column.sidebar, .column.main {
+         width: 100% !important;
+    }
+     .topnav {
+         flex-direction: column !important;
+         padding: 10px !important;
+         width: 65vw !important;
+         margin: 5px auto !important;
+    }
+     .topnav a {
+         display: block !important;
+         margin: 5px !important;
+         font-size: 16px !important;
+    }
+     section {
+         margin: 5px !important;
+         padding: 5px !important;
+    }
+     .sidebar {
+         margin: 10px 0 !important;
+         padding: 0;
+    }
+     .panel {
+         margin: 0;
+         width: 100%;
+    }
+     .header h1 {
+         float: left;
+    }
+     .header button {
+         float: right;
+    }
+     h1, .main {
+         margin: 5px;
+    }
+     h1 a {
+         font-size: 60px;
+    }
+}
+ @media screen and (min-width: 700px) and (max-width: 950px) {
+     .container {
+         padding: 10px !important;
+         transform: translate(0) !important;
+    }
+     .column.sidebar, .column.main {
+         width: 100% !important;
+    }
+     .topnav {
+         padding: 5px !important;
+    }
+     .topnav a {
+         display: block !important;
+         padding: 10px !important;
+    }
+     .header button {
+         float: right;
+    }
+     .mobile-only {
+         display: none;
+    }
+}
+ @media screen and (min-width: 950px) and (max-width: 1200px) {
+     .sidebar {
+         width: 25.5% !important;
+    }
+     .main {
+         width: 72% !important;
+    }
+}
+ @media screen and (min-width: 950px) {
+     .container {
+         position: static !important;
+         transform: translate(0) !important;
+         width: 70rem !important;
+         max-width: 100%;
+         padding: 10px;
+         margin: 0 auto;
+    }
+     .column.main {
+         max-height: fit-content !important;
+    }
+     .header {
+         height: auto !important;
+    }
+     .header h1 {
+         top: 0;
+         max-height: none;
+         padding: 0;
+    }
+     .topnav a {
+         position: static !important;
+         text-align: center;
+         margin: 10px;
+    }
+}
