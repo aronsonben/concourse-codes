@@ -2,6 +2,7 @@
 layout: layouts/base.njk
 title: Contact
 permalink: contact.html
+page_type: contact
 ---
 <style>
   #emailspan {
@@ -36,7 +37,7 @@ permalink: contact.html
   }
 </style>
 
-<div style="margin: 10px;">
+<div style="margin: 10px;" data-track-section="contact">
   <h2>Contact</h2>
   <p>A few ways to get in touch.</p>
   <br />
@@ -62,5 +63,6 @@ permalink: contact.html
     const email = document.getElementById('emailspan').textContent.trim();
     await navigator.clipboard.writeText(email);
     document.getElementById('copiedtext').style.display = 'inline';
+    if (window.trackEvent) trackEvent('copy_email');
   });
 </script>

@@ -2,6 +2,7 @@
 layout: layouts/base.njk
 title: Projects
 permalink: projects.html
+page_type: projects
 ---
 
 <style>
@@ -511,7 +512,7 @@ permalink: projects.html
     }
   }
 </style>
-<div style="margin: 10px;">
+<div style="margin: 10px;" data-track-section="projects_header">
   <h2>Projects</h2>
   <a href="https://github.com/aronsonben" rel="noopener noreferrer" style="font-size: 0.75rem"><p><i>Take a peek at all my GitHub repositories here.</i></p></a>
   <br/>
@@ -576,7 +577,7 @@ permalink: projects.html
         </div>
       </div>
     </div>
-    <div class="desktop-content">
+    <div class="desktop-content" data-track-section="desktop_icon">
       <div class="desktop-row">
         <a href="https://colors.concourse.codes" target="_blank" rel="noopener noreferrer" class="desktop-icon">
           <div class="icon-wrapper">
@@ -800,15 +801,25 @@ permalink: projects.html
   </table>
 </div>
 <script>
+  // Distinguish the table's title vs status links in click tracking.
+  document.querySelectorAll('.project-table .project-title').forEach(function (td) {
+    td.setAttribute('data-track-section', 'project_table_title');
+  });
+  document.querySelectorAll('.project-table .status-col').forEach(function (td) {
+    td.setAttribute('data-track-section', 'project_table_status');
+  });
+
   function toggleAbout() {
     const overlay = document.getElementById('about-overlay');
     const btn = document.getElementById('about-btn');
     overlay.classList.toggle('visible');
     btn.classList.toggle('pressed');
     setTimeout(() => btn.classList.remove('pressed'), 150);
+    if (window.trackEvent) trackEvent(overlay.classList.contains('visible') ? 'about_open' : 'about_close');
   }
   function closeAbout() {
     document.getElementById('about-overlay').classList.remove('visible');
+    if (window.trackEvent) trackEvent('about_close');
   }
   function closeAboutOnOverlay(e) {
     if (e.target === document.getElementById('about-overlay')) closeAbout();

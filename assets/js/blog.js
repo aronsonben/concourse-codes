@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
     .then((str) => new window.DOMParser().parseFromString(str, 'text/xml'))
     .then((data) => {
       const items = data.querySelectorAll('entry');
-      let previewHtml = '<div class="blog-previews">';
-      let listHtml = '<div>';
+      let previewHtml = '<div class="blog-previews" data-track-section="blog_preview">';
+      let listHtml = '<div data-track-section="blog_list">';
 
       items.forEach((el, index) => {
         const titleEl = el.querySelector('title');
@@ -61,9 +61,11 @@ document.addEventListener('DOMContentLoaded', function () {
       previewHtml += '</div><h3 class="blog-other-posts-heading">Other Posts</h3>';
       listHtml += '</div>';
       rssFeedContainer.innerHTML = previewHtml + listHtml;
+      if (window.trackEvent) trackEvent('blog_feed_loaded', { post_count: items.length });
     })
     .catch((error) => {
       console.error('Error fetching the RSS feed:', error);
       rssFeedContainer.innerHTML = '<p>Failed to load RSS feed.</p>';
+      if (window.trackEvent) trackEvent('blog_feed_error');
     });
 });

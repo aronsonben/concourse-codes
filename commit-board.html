@@ -2,29 +2,7 @@
 layout: layouts/base.njk
 title: Commit Board
 permalink: commit-board.html
-headExtra: |
-  <script>
-    // Additional tracking for commit board page
-    gtag('config', 'G-4KMFDS6BW1', {
-      'page_title': 'Commit Board - Concourse Codes',
-      'page_location': window.location.href,
-      'content_group1': 'commit_board',
-      'content_group2': 'interactive_page',
-      'custom_map': {
-        'custom_dimension_1': 'page_type',
-        'custom_dimension_2': 'user_interaction'
-      }
-    });
-
-    // Track page view with additional context
-    gtag('event', 'page_view', {
-      'page_type': 'commit_board',
-      'page_section': 'personal',
-      'engagement_time_msec': 100,
-      'page_referrer': document.referrer,
-      'user_agent': navigator.userAgent.substring(0, 100)
-    });
-  </script>
+page_type: commit_board
 ---
 
 <div class="container-center">
