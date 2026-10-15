@@ -1,10 +1,24 @@
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.gaId }}"></script>
+<!-- Google tag (gtag.js); only active on the production host -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  var pageType = '{{ page_type }}';
-  gtag('config', '{{ site.gaId }}', pageType ? { content_group: pageType } : {});
+  (function () {
+    var host = '{{ site.prodHost }}';
+    var isProd = location.hostname === host || location.hostname === 'www.' + host;
+
+    if (!isProd) {
+      window.gtag = function () {};
+      return;
+    }
+
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.gaId }}';
+    document.head.appendChild(s);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    gtag('js', new Date());
+    var pageType = '{{ page_type }}';
+    gtag('config', '{{ site.gaId }}', pageType ? { content_group: pageType } : {});
+  })();
 </script>
 <script src="/assets/js/analytics.js" defer></script>
